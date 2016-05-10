@@ -60,9 +60,11 @@
     margin-top: 5px;
     border-color: #0a1f38;
 }
-
-label {
-    margin-bottom: 2px;
+.title-image {
     margin-top: 8px;
-    font-weight: 300;
+    height: 27px;
+}
+
+.angular-with-newlines {
+    white-space: pre-wrap;
 }

@@ -1,6 +1,6 @@
 'use strict';
-angular.module('starter', ['ionic'])
-    .run(function($ionicPlatform) {
+angular.module('starter', ['ionic','LocalStorageModule'])
+    .run(function($ionicPlatform,$rootScope) {
         $ionicPlatform.ready(function() {
             if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -12,6 +12,8 @@ angular.module('starter', ['ionic'])
                 StatusBar.styleDefault();
             }
         });
+
+        $rootScope.navTitle = '<img class="title-image" src="img/beltcalc-logo.png">';
     })
     .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
@@ -20,30 +22,35 @@ angular.module('starter', ['ionic'])
         $stateProvider
             .state('tab', {
                 url: '/tab',
-                templateUrl: 'templates/tabs.html'
-            })
-            .state('dash', {
-                url: '/dash',
-                templateUrl: 'templates/tab-dash.html',
+                templateUrl: 'templates/tabs.html',
                 controller: 'DashCtrl'
             })
-            .state('chats', {
-                url: '/chats',
-                templateUrl: 'templates/tab-chats.html',
-                controller: 'ChatsCtrl'
+            .state('twopulleys-01', {
+                url: '/twopulleys1',
+                templateUrl: 'templates/two_pulley/twopulleys-01.html',
+                controller: 'DashCtrl'
             })
-            .state('chat-detail', {
-                url: '/detail',
-                templateUrl: 'templates/chat-detail.html',
-                controller: 'ChatDetailCtrl'
-
+            .state('twopulleys-02', {
+                url: '/twopulleys2',
+                templateUrl: 'templates/two_pulley/twopulleys-02.html',
+                controller: 'DashCtrl'
             })
-            .state('account', {
-                url: '/account',
-                templateUrl: 'templates/tab-account.html',
-                controller: 'AccountCtrl'
+            .state('twopulleys-03', {
+                url: '/twopulleys3',
+                templateUrl: 'templates/two_pulley/twopulleys-03.html',
+                controller: 'DashCtrl'
+            })
+            .state('twopulleys-04', {
+                url: '/twopulleys4',
+                templateUrl: 'templates/two_pulley/twopulleys-04.html',
+                controller: 'DashCtrl'
+            })
+            .state('twopulleys-05', {
+                url: '/twopulleys5',
+                templateUrl: 'templates/two_pulley/twopulleys-05.html',
+                controller: 'DashCtrl'
             });
 
-        $urlRouterProvider.otherwise('/tab/dash');
+        $urlRouterProvider.otherwise('/tab');
 
     });
