@@ -1,15 +1,7 @@
 'use strict';
 
 angular.module('starter')
-    .controller('DashCtrl', function($scope, $state, localStorageService) {
-        var totalPage = 4;
-
-        if (parseInt(localStorageService.get('currentPage')) > 5) {
-            localStorageService.set('currentPage', 0);
-        }
-
-        var currentPage = localStorageService.get('currentPage') || 0;
-
+    .controller('DashCtrl', function(_, $scope, $state, $ionicHistory) {
         var pagesArr = [
             'twopulleys-01',
             'twopulleys-02',
@@ -18,26 +10,53 @@ angular.module('starter')
             'twopulleys-05',
         ];
 
-        $scope.nextPage = function() {
-            if (parseInt(localStorageService.get('currentPage')) > 5) {
-                localStorageService.set('currentPage', 0);
-            }
+        var currentStateName = $ionicHistory.currentStateName();
+        var currentPage = _.findIndex(pagesArr, function(o) {
+            return o == currentStateName;
+        });
 
-            currentPage++;
-            localStorageService.set('currentPage', currentPage);
-            if (currentPage <= 5) {
-                $state.go(pagesArr[currentPage]);
+        $scope.nextPage = function() {
+            if ($ionicHistory.currentStateName() !== pagesArr[4]) {
+                $state.go(pagesArr[currentPage + 1]);
             }
         };
 
         $scope.prevPage = function() {
-            if (currentPage > 0) {
-                currentPage--;
-                localStorageService.set('currentPage', currentPage);
-                $state.go(pagesArr[currentPage]);
+            if ($ionicHistory.currentStateName() !== pagesArr[0]) {
+                $state.go(pagesArr[currentPage - 1]);
+            } else if ($ionicHistory.currentStateName() == pagesArr[0]) {
+                $state.go('tab');
             }
         };
     })
-    .controller('ChatsCtrl', function($scope) {
+    .controller('ChatsCtrl', function(_, $scope, $state, $ionicHistory) {
+        var pagesArr = [
+            'threepulleys-01',
+            'threepulleys-02',
+            'threepulleys-03',
+            'threepulleys-04',
+            'threepulleys-05',
+            'threepulleys-06',
+            'threepulleys-07',
+            'threepulleys-08',
+        ];
 
+        var currentStateName = $ionicHistory.currentStateName();
+        var currentPage = _.findIndex(pagesArr, function(o) {
+            return o == currentStateName;
+        });
+
+        $scope.nextPage = function() {
+            if ($ionicHistory.currentStateName() !== pagesArr[4]) {
+                $state.go(pagesArr[currentPage + 1]);
+            }
+        };
+
+        $scope.prevPage = function() {
+            if ($ionicHistory.currentStateName() !== pagesArr[0]) {
+                $state.go(pagesArr[currentPage - 1]);
+            } else if ($ionicHistory.currentStateName() == pagesArr[0]) {
+                $state.go('tab');
+            }
+        };
     });

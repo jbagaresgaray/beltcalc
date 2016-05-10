@@ -26,5 +26,20 @@ angular.module('starter')
                 url: '/threepulleys5',
                 templateUrl: 'templates/three_pulley/threepulleys-05.html',
                 controller: 'ChatsCtrl'
+            })
+            .state('threepulleys-06', {
+                url: '/threepulleys6',
+                templateUrl: 'templates/three_pulley/threepulleys-06.html',
+                controller: 'ChatsCtrl'
+            })
+            .state('threepulleys-07', {
+                url: '/threepulleys7',
+                templateUrl: 'templates/three_pulley/threepulleys-07.html',
+                controller: 'ChatsCtrl'
+            })
+            .state('threepulleys-08', {
+                url: '/threepulleys8',
+                templateUrl: 'templates/three_pulley/threepulleys-08.html',
+                controller: 'ChatsCtrl'
             });
     });

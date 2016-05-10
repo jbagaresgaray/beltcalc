@@ -23,7 +23,7 @@
 .intro-btn p {
     font-size: 18px;
     line-height: 1.3333333;
-     color: #b24825 !important;
+    color: #b24825 !important;
 }
 
 .cream {
@@ -36,7 +36,7 @@
 .cream h3,
 .cream h4,
 .cream h5,
-.cream p{
+.cream p {
     color: #0d2643;
 }
 
@@ -49,17 +49,17 @@
 }
 
 .footer-btn {
-	padding: 10px 16px !important;
+    padding: 10px 16px !important;
     font-size: 18px !important;
     line-height: 1.3333333 !important;
     border-radius: 6px !important;
-
     background-color: #b24826;
     color: #f3f3f3;
     width: 140px;
     margin-top: 5px;
     border-color: #0a1f38;
 }
+
 .title-image {
     margin-top: 8px;
     height: 27px;
@@ -67,4 +67,12 @@
 
 .angular-with-newlines {
     white-space: pre-wrap;
+}
+
+.keyboard-open .tabs {
+    display: none;
+}
+
+.keyboard-open .has-tabs {
+    bottom: 0;
 }
