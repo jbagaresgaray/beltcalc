@@ -47,7 +47,7 @@ angular.module('starter')
         });
 
         $scope.nextPage = function() {
-            if ($ionicHistory.currentStateName() !== pagesArr[4]) {
+            if ($ionicHistory.currentStateName() !== pagesArr[7]) {
                 $state.go(pagesArr[currentPage + 1]);
             }
         };
