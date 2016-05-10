@@ -1,6 +1,9 @@
 'use strict';
 
 angular.module('starter')
+    .factory('_', ['$window', function($window) {
+        return $window._;
+    }])
     .factory('Chats', function() {
         // Might use a resource here that returns a JSON array
 
