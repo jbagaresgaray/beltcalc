@@ -1,7 +1,12 @@
-'use strict';
+(function() {
+    'use strict';
 
-angular.module('starter')
-    .controller('DashCtrl', function(_, $scope, $state, $ionicHistory, $ionicViewSwitcher, TwoPullyCalculator) {
+    angular.module('starter')
+        .controller('DashCtrl', DashCtrl);
+
+    DashCtrl.$inject = ['_', '$scope', '$state', ' $ionicHistory', '$ionicViewSwitcher', 'TwoPullyCalculator'];
+
+    function DashCtrl(_, $scope, $state, $ionicHistory, $ionicViewSwitcher, TwoPullyCalculator) {
         var currentStateName = $ionicHistory.currentStateName();
         var currentPage = _.findIndex(TwoPullyCalculator.pagesArr(), function(o) {
             return o == currentStateName;
@@ -15,7 +20,7 @@ angular.module('starter')
         if (currentStateName == 'twopulleys-01') {
             $scope.nextTitle = 'Next';
         } else if (currentStateName == 'twopulleys-02') {
-            $scope.pulleyCenter = TwoPullyCalculator.getPulleyCenterDistance();
+            $scope.pulleyCenter = TwoPullyCalculator.getPulleyCenterDistance1();
             $scope.nextTitle = 'Next';
         } else if (currentStateName == 'twopulleys-03') {
             $scope.largeDiameter = TwoPullyCalculator.getLargePulleyDiameter();
@@ -28,7 +33,7 @@ angular.module('starter')
             $scope.largeDiameter = TwoPullyCalculator.calculatePulleyDiameter(TwoPullyCalculator.getLargePulleyDiameter());
             $scope.smallDiameter = TwoPullyCalculator.calculatePulleyDiameter(TwoPullyCalculator.getSmallPulleyDiameter());
 
-            $scope.beltLength = TwoPullyCalculator.calculateBeltLength($scope.pulleyCenter,$scope.largeDiameter,$scope.smallDiameter);
+            $scope.beltLength = TwoPullyCalculator.calculateBeltLength($scope.pulleyCenter, $scope.largeDiameter, $scope.smallDiameter);
 
             $scope.nextTitle = 'Re-Calculate';
         }
@@ -86,4 +91,5 @@ angular.module('starter')
                 $state.go('tab');
             }
         };
-    });
+    }
+})();
