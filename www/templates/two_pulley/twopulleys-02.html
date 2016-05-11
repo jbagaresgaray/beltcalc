@@ -10,9 +10,12 @@
             <div class="item padding item-image">
                 <img src="img/2p-02.png">
             </div>
+            <div class="item item-divider cream text-center">
+                <small>Distance Between Pulleys</small>
+            </div>
             <div class="item item-input-inset">
                 <label class="item item-input-wrapper">
-                    <input type="text" placeholder="Distance Between Pulleys">
+                    <input type="number" placeholder="Distance Between Pulleys" ng-model="pulleyCenter" ng-change="pulleyCenterChange(pulleyCenter)">
                 </label>
             </div>
         </div>

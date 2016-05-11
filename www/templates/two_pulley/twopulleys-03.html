@@ -9,9 +9,12 @@
             <div class="item padding item-image">
                 <img src="img/2p-03.png">
             </div>
+            <div class="item item-divider cream text-center">
+                <small>A's Outside Diameter</small>
+            </div>
             <div class="item item-input-inset">
                 <label class="item item-input-wrapper">
-                    <input type="text" placeholder="A's Outside Diameter">
+                    <input type="number" placeholder="A's Outside Diameter" ng-model="largeDiameter" ng-change="largeDiameterChange(largeDiameter)">
                 </label>
             </div>
         </div>

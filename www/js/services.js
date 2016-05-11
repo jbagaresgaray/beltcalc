@@ -4,51 +4,49 @@ angular.module('starter')
     .factory('_', ['$window', function($window) {
         return $window._;
     }])
-    .factory('Chats', function() {
-        // Might use a resource here that returns a JSON array
-
-        // Some fake testing data
-        var chats = [{
-            id: 0,
-            name: 'Ben Sparrow',
-            lastText: 'You on your way?',
-            face: 'img/ben.png'
-        }, {
-            id: 1,
-            name: 'Max Lynx',
-            lastText: 'Hey, it\'s me',
-            face: 'img/max.png'
-        }, {
-            id: 2,
-            name: 'Adam Bradleyson',
-            lastText: 'I should buy a boat',
-            face: 'img/adam.jpg'
-        }, {
-            id: 3,
-            name: 'Perry Governor',
-            lastText: 'Look at my mukluks!',
-            face: 'img/perry.png'
-        }, {
-            id: 4,
-            name: 'Mike Harrington',
-            lastText: 'This is wicked good ice cream.',
-            face: 'img/mike.png'
-        }];
-
+    .factory('TwoPullyCalculator', function(localStorageService) {
         return {
-            all: function() {
-                return chats;
+            pagesArr: function() {
+                return [
+                    'twopulleys-01',
+                    'twopulleys-02',
+                    'twopulleys-03',
+                    'twopulleys-04',
+                    'twopulleys-05'
+                ];
             },
-            remove: function(chat) {
-                chats.splice(chats.indexOf(chat), 1);
+            setPulleyCenterDistance: function(value) {
+                localStorageService.set('pulleyCenter', value);
             },
-            get: function(chatId) {
-                for (var i = 0; i < chats.length; i++) {
-                    if (chats[i].id === parseInt(chatId)) {
-                        return chats[i];
-                    }
-                }
-                return null;
+            getPulleyCenterDistance: function() {
+                return localStorageService.get('pulleyCenter') || 0;
+            },
+            setSmallPulleyDiameter: function(value) {
+                localStorageService.set('smallDiameter', value);
+            },
+            getSmallPulleyDiameter: function() {
+                return localStorageService.get('smallDiameter') || 0;
+            },
+            setLargePulleyDiameter: function(value) {
+                localStorageService.set('largeDiameter', value);
+            },
+            getLargePulleyDiameter: function() {
+                return localStorageService.get('largeDiameter') || 0;
+            },
+            calculatePulleyCenter: function(center) {
+                return parseFloat((center * 2)).toFixed(4);
+            },
+            calculatePulleyDiameter: function(diameter) {
+                return parseFloat(((Math.PI * diameter) / 2)).toFixed(4);
+            },
+            calculateBeltLength: function(center, large, small) {
+                center = parseFloat(center);
+                large = parseFloat(large);
+                small = parseFloat(small);
+
+                var sumTotal = (center + large + small);
+
+                return parseFloat((sumTotal - .250)).toFixed(4);
             }
         };
     });
