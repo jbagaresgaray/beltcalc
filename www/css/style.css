@@ -38,6 +38,7 @@
 .cream h5,
 .cream p {
     color: #0d2643;
+    white-space: normal;
 }
 
 .orange {
