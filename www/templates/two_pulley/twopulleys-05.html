@@ -1,6 +1,6 @@
 <ion-view view-title="{{navTitle}}" class="blue">
     <ion-content class="padding-top has-tabs">
-        <h5 class="text-center">Follow the steps to calculate the correct belt legth for two pulleys.</h5>
+        <h5 class="padding text-center">Follow the steps to calculate the correct belt length for two pulleys.</h5>
         <div class="item cream">
             <h3 class="text-center orange">STEP FIVE</h3>
             <h2 class="text-center orange">(Calculated Size)</h2>
@@ -13,21 +13,27 @@
             <div class="item item-divider cream text-center">
                 <small>Distance Between Pulleys</small>
             </div>
-            <label class="item item-input">
-                <input type="text" placeholder="Distance Between Pulleys">
-            </label>
+            <div class="item item-input-inset">
+                <label class="item item-input-wrapper">
+                    <input type="text" placeholder="Distance Between Pulleys">
+                </label>
+            </div>
             <div class="item item-divider cream text-center">
                 <small>A's Outside Diameter</small>
             </div>
-            <label class="item item-input">
-                <input type="text" placeholder="A's Outside Diameter">
-            </label>
+            <div class="item item-input-inset">
+                <label class="item item-input-wrapper">
+                    <input type="text" placeholder="A's Outside Diameter">
+                </label>
+            </div>
             <div class="item item-divider cream text-center">
                 <small>B's Outside Diameter</small>
             </div>
-            <label class="item item-input">
-                <input type="text" placeholder="B's Outside Diameter">
-            </label>
+            <div class="item item-input-inset">
+                <label class="item item-input-wrapper">
+                    <input type="text" placeholder="B's Outside Diameter">
+                </label>
+            </div>
         </div>
     </ion-content>
     <ion-footer-bar align-title="left" class="bar-royal hide-on-keyboard-open">
@@ -36,7 +42,7 @@
         </div>
         <h1 class="title"></h1>
         <div class="buttons">
-            <button class="button button-energized footer-btn" ng-click="nextPage()">Next</button>
+            <button class="button button-energized footer-btn" ng-click="nextPage()">{{nextTitle}}</button>
         </div>
     </ion-footer-bar>
 </ion-view>
