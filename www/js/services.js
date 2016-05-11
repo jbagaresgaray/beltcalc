@@ -107,14 +107,19 @@
                 calculatePulleyDiameter: function(diameter) {
                     return parseFloat(((Math.PI * diameter) / 2)).toFixed(4);
                 },
-                calculateBeltLength: function(center, large, small) {
-                    center = parseFloat(center);
+                calculateBeltLength: function(center1, center2, center3, large, medium, small) {
+                    center1 = parseFloat(center1);
+                    center2 = parseFloat(center2);
+                    center3 = parseFloat(center3);
+
                     large = parseFloat(large);
+                    medium = parseFloat(medium);
                     small = parseFloat(small);
 
-                    var sumTotal = (center + large + small);
+                    var  sumCenterTotal= (center1 + center2 + center3);
+                    var sumTotal = (large + medium + small);
 
-                    return parseFloat((sumTotal - .250)).toFixed(4);
+                    return parseFloat(((sumCenterTotal+sumTotal) - .250)).toFixed(4);
                 }
             };
         }]);

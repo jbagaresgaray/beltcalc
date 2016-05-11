@@ -4,7 +4,7 @@
     angular.module('starter')
         .controller('DashCtrl', DashCtrl);
 
-    DashCtrl.$inject = ['_', '$scope', '$state', ' $ionicHistory', '$ionicViewSwitcher', 'TwoPullyCalculator'];
+    DashCtrl.$inject = ['_', '$scope', '$state', '$ionicHistory', '$ionicViewSwitcher', 'TwoPullyCalculator'];
 
     function DashCtrl(_, $scope, $state, $ionicHistory, $ionicViewSwitcher, TwoPullyCalculator) {
         var currentStateName = $ionicHistory.currentStateName();
@@ -20,7 +20,7 @@
         if (currentStateName == 'twopulleys-01') {
             $scope.nextTitle = 'Next';
         } else if (currentStateName == 'twopulleys-02') {
-            $scope.pulleyCenter = TwoPullyCalculator.getPulleyCenterDistance1();
+            $scope.pulleyCenter = TwoPullyCalculator.getPulleyCenterDistance();
             $scope.nextTitle = 'Next';
         } else if (currentStateName == 'twopulleys-03') {
             $scope.largeDiameter = TwoPullyCalculator.getLargePulleyDiameter();

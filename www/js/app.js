@@ -25,11 +25,12 @@
                 .state('tab', {
                     url: '/tab',
                     templateUrl: 'templates/tabs.html',
-                    controller: 'DashCtrl'
+                    controller: 'AppCtrl'
                 });
 
             $urlRouterProvider.otherwise('/tab');
 
-        }]);
+        }])
+        .controller('AppCtrl', ['$scope', function($scope) {}]);
 
 })();
