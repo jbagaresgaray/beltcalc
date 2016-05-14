@@ -15,7 +15,8 @@
             </div>
             <div class="item item-input-inset">
                 <label class="item item-input-wrapper">
-                    <b class="result-labels" ng-bind="pulleyCenter"></b>
+                    <!-- <b class="result-labels" ng-bind="pulleyCenter"></b> -->
+                    <input type="text" placeholder="Distance Between Pulleys" ng-model="pulleyCenter" ng-change="pulleyCenterChange(pulleyCenter)">
                 </label>
             </div>
             <div class="item item-divider cream text-center">
@@ -23,7 +24,8 @@
             </div>
             <div class="item item-input-inset">
                 <label class="item item-input-wrapper">
-                    <b class="result-labels" ng-bind="largeDiameter"></b>
+                    <!-- <b class="result-labels" ng-bind="largeDiameter"></b> -->
+                    <input type="text" placeholder="A's Outside Diameter" ng-model="largeDiameter" ng-change="largeDiameterChange(largeDiameter)">
                 </label>
             </div>
             <div class="item item-divider cream text-center">
@@ -31,7 +33,8 @@
             </div>
             <div class="item item-input-inset">
                 <label class="item item-input-wrapper">
-                    <b class="result-labels" ng-bind="smallDiameter"></b>
+                    <!-- <b class="result-labels" ng-bind="smallDiameter"></b> -->
+                    <input type="text" placeholder="B's Outside Diameter" ng-model="smallDiameter" ng-change="smallDiameterChange(smallDiameter)">
                 </label>
             </div>
             <div class="item item-divider cream text-center">

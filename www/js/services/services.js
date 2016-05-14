@@ -40,13 +40,17 @@
                     return parseFloat(((Math.PI * diameter) / 2)).toFixed(4);
                 },
                 calculateBeltLength: function(center, large, small) {
+                    console.log('center: ', center);
+                    console.log('large: ', large);
+                    console.log('small: ', small);
+
                     center = parseFloat(center);
                     large = parseFloat(large);
                     small = parseFloat(small);
 
                     var sumTotal = (center + large + small);
 
-                    return parseFloat((sumTotal - .250)).toFixed(4);
+                    return parseFloat((sumTotal - 2)).toFixed(4);
                 }
             };
         }])
@@ -106,6 +110,14 @@
                     return parseFloat(((Math.PI * diameter) / 2)).toFixed(4);
                 },
                 calculateBeltLength: function(center1, center2, center3, large, medium, small) {
+                    console.log('center1: ', center1);
+                    console.log('center2: ', center2);
+                    console.log('center3: ', center3);
+
+                    console.log('large: ', large);
+                    console.log('medium: ', medium);
+                    console.log('small: ', small);
+
                     center1 = parseFloat(center1);
                     center2 = parseFloat(center2);
                     center3 = parseFloat(center3);
@@ -114,10 +126,10 @@
                     medium = parseFloat(medium);
                     small = parseFloat(small);
 
-                    var  sumCenterTotal= (center1 + center2 + center3);
+                    var sumCenterTotal = (center1 + center2 + center3);
                     var sumTotal = (large + medium + small);
 
-                    return parseFloat(((sumCenterTotal+sumTotal) - .250)).toFixed(4);
+                    return Math.max(0, parseFloat(((sumCenterTotal + sumTotal) - 2))).toFixed(4);
                 }
             };
         }]);

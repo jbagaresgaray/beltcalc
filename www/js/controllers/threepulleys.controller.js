@@ -13,7 +13,7 @@
             return o == currentStateName;
         });
 
-        $scope.pulleyCenter1 = 200;
+        $scope.pulleyCenter1 = 0;
         $scope.pulleyCenter2 = 0;
         $scope.pulleyCenter3 = 0;
 
@@ -88,6 +88,22 @@
             $scope.largeDiameter = newValue;
         };
 
+        $scope.calculateResult = function() {
+
+            var pulleyCenter1 = ThreePullyCalculator.calculatePulleyCenter($scope.pulleyCenter1);
+            var pulleyCenter2 = ThreePullyCalculator.calculatePulleyCenter($scope.pulleyCenter2);
+            var pulleyCenter3 = ThreePullyCalculator.calculatePulleyCenter($scope.pulleyCenter3);
+
+            var largeDiameter = ThreePullyCalculator.calculatePulleyDiameter($scope.largeDiameter);
+            var mediumDiameter = ThreePullyCalculator.calculatePulleyDiameter($scope.mediumDiameter);
+            var smallDiameter = ThreePullyCalculator.calculatePulleyDiameter($scope.smallDiameter);
+
+            $scope.beltLength = ThreePullyCalculator.calculateBeltLength(pulleyCenter1, pulleyCenter2, pulleyCenter3,
+                largeDiameter, mediumDiameter, smallDiameter);
+
+            console.log('beltLength: ', $scope.beltLength);
+        };
+
 
         $scope.nextPage = function() {
             if ($ionicHistory.currentStateName() !== ThreePullyCalculator.pagesArr()[6]) {
@@ -113,19 +129,21 @@
 
                 $state.go(ThreePullyCalculator.pagesArr()[currentPage + 1]);
             } else {
-                $ionicHistory.nextViewOptions({
-                    disableBack: true
-                });
-                $ionicViewSwitcher.nextDirection('back');
+                // $ionicHistory.nextViewOptions({
+                //     disableBack: true
+                // });
+                // $ionicViewSwitcher.nextDirection('back');
 
-                ThreePullyCalculator.setPulleyCenterDistance1(0);
-                ThreePullyCalculator.setPulleyCenterDistance2(0);
-                ThreePullyCalculator.setPulleyCenterDistance3(0);
-                ThreePullyCalculator.setLargePulleyDiameter(0);
-                ThreePullyCalculator.setMediumPulleyDiameter(0);
-                ThreePullyCalculator.setSmallPulleyDiameter(0);
+                // ThreePullyCalculator.setPulleyCenterDistance1(0);
+                // ThreePullyCalculator.setPulleyCenterDistance2(0);
+                // ThreePullyCalculator.setPulleyCenterDistance3(0);
+                // ThreePullyCalculator.setLargePulleyDiameter(0);
+                // ThreePullyCalculator.setMediumPulleyDiameter(0);
+                // ThreePullyCalculator.setSmallPulleyDiameter(0);
 
-                $state.go('threepulleys-02');
+                // $state.go('threepulleys-02');
+
+                $scope.calculateResult();
             }
         };
 
