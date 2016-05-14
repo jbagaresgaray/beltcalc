@@ -51,6 +51,12 @@
                     templateUrl: 'templates/three_pulley/threepulleys-08.html',
                     controller: 'ChatsCtrl',
                     cache: false
+                })
+                .state('threepulleys-calculation', {
+                    url: '/threepulleyscalculation',
+                    templateUrl: 'templates/three_pulley/calculation.html',
+                    controller: 'ChatsCalcCtrl',
+                    cache: false
                 });
         }]);
 

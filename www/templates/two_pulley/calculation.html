@@ -1,0 +1,58 @@
+<ion-view view-title="{{navTitle}}" class="blue">
+    <ion-content class="padding-top">
+        <h5 class="padding text-center">Follow the steps to calculate the correct belt length for two pulleys.</h5>
+        <div class="item cream">
+            <h2 class="text-center orange">(Calculated Size)</h2>
+            <h4 class="text-center text-wrap">Check the the values and adjust if necessary. Calculate to find the correct belt size.</h4>
+        </div>
+        <div class="list">
+            <div class="item padding item-image">
+                <img src="img/2p-05.png">
+            </div>
+            <div class="item item-divider cream text-center">
+                <small>Distance Between Pulleys</small>
+            </div>
+            <div class="item item-input-inset">
+                <label class="item item-input-wrapper">
+                    <!-- <b class="result-labels" ng-bind="pulleyCenter"></b> -->
+                    <input type="text" placeholder="Distance Between Pulleys" ng-model="pulleyCenter" ng-change="pulleyCenterChange(pulleyCenter)">
+                </label>
+            </div>
+            <div class="item item-divider cream text-center">
+                <small>A's Outside Diameter</small>
+            </div>
+            <div class="item item-input-inset">
+                <label class="item item-input-wrapper">
+                    <!-- <b class="result-labels" ng-bind="largeDiameter"></b> -->
+                    <input type="text" placeholder="A's Outside Diameter" ng-model="largeDiameter" ng-change="largeDiameterChange(largeDiameter)">
+                </label>
+            </div>
+            <div class="item item-divider cream text-center">
+                <small>B's Outside Diameter</small>
+            </div>
+            <div class="item item-input-inset">
+                <label class="item item-input-wrapper">
+                    <!-- <b class="result-labels" ng-bind="smallDiameter"></b> -->
+                    <input type="text" placeholder="B's Outside Diameter" ng-model="smallDiameter" ng-change="smallDiameterChange(smallDiameter)">
+                </label>
+            </div>
+            <div class="item item-divider cream text-center">
+                <small>Belt Length</small>
+            </div>
+            <div class="item item-input-inset">
+                <label class="item item-input-wrapper">
+                    <b class="total-labels" ng-bind="beltLength"></b>
+                </label>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar align-title="left" class="bar-royal hide-on-keyboard-open">
+        <div class="buttons">
+            <button class="button button-energized footer-btn" ng-click="prevPage()">Home</button>
+        </div>
+        <h1 class="title"></h1>
+        <div class="buttons">
+            <button class="button button-energized footer-btn" ng-click="calculateResult()">Calculate</button>
+        </div>
+    </ion-footer-bar>
+</ion-view>

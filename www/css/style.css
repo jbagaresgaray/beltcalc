@@ -93,3 +93,13 @@
 .keyboard-open .has-tabs {
     bottom: 0;
 }
+
+.popover {
+    height: 115px;
+}
+
+.platform-android .popover {
+    margin-top: -32px;
+    background-color: #fafafa;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}

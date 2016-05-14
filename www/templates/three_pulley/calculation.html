@@ -1,0 +1,79 @@
+<ion-view view-title="{{navTitle}}" class="blue">
+    <ion-content class="padding-top">
+        <h5 class="padding text-center">Follow the steps to calculate the correct belt length for three pulleys.</h5>
+        <div class="item cream">
+            <h2 class="text-center orange">(Calculated Size)</h2>
+            <h4 class="text-center text-wrap">Check the the values and adjust if necessary. Calculate to find the correct belt size.</h4>
+        </div>
+        <div class="list">
+            <div class="item padding item-image">
+                <img src="img/3p-08.png">
+            </div>
+            <div class="item item-divider cream text-center">
+                <small>Distance Between Pulley A and Pulley B</small>
+            </div>
+            <div class="item item-input-inset">
+                <label class="item item-input-wrapper">
+                    <input type="text" placeholder="Distance Between Pulley A and Pulley B" ng-model="pulleyCenter1" ng-change="pulleyCenterChange1(pulleyCenter1)">
+                </label>
+            </div>
+            <div class="item item-divider cream text-center">
+                <small>Distance Between Pulley B and Pulley</small>
+            </div>
+            <div class="item item-input-inset">
+                <label class="item item-input-wrapper">
+                    <input type="text" placeholder="Distance Between Pulley B and Pulley C" ng-model="pulleyCenter2" ng-change="pulleyCenterChange2(pulleyCenter2)">
+                </label>
+            </div>
+            <div class="item item-divider cream text-center">
+                <small>Distance Between Pulley C and Pulley A</small>
+            </div>
+            <div class="item item-input-inset">
+                <label class="item item-input-wrapper">
+                    <input type="text" placeholder="Distance Between Pulley C and Pulley A" ng-model="pulleyCenter3" ng-change="pulleyCenterChange3(pulleyCenter3)">
+                </label>
+            </div>
+            <div class="item item-divider cream text-center">
+                <small>Pulley A's outside diameter</small>
+            </div>
+            <div class="item item-input-inset">
+                <label class="item item-input-wrapper">
+                     <input type="text" placeholder="Pulley A's outside diameter" ng-model="largeDiameter" ng-change="largeDiameterChange(largeDiameter)"> 
+                </label>
+            </div>
+            <div class="item item-divider cream text-center">
+                <small>Pulley B's outside diameter</small>
+            </div>
+            <div class="item item-input-inset">
+                <label class="item item-input-wrapper">
+                    <input type="text" placeholder="Pulley B's outside diameter" ng-model="mediumDiameter" ng-change="mediumDiameterChange(mediumDiameter)">
+                </label>
+            </div>
+            <div class="item item-divider cream text-center">
+                <small>Pulley C's outside diameter</small>
+            </div>
+            <div class="item item-input-inset">
+                <label class="item item-input-wrapper">
+                     <input type="text" placeholder="Pulley C's outside diameter" ng-model="smallDiameter" ng-change="smallDiameterChange(smallDiameter)">
+                </label>
+            </div>
+            <div class="item item-divider cream text-center">
+                <small>Belt Length</small>
+            </div>
+            <div class="item item-input-inset">
+                <label class="item item-input-wrapper">
+                    <b class="total-labels" ng-bind="beltLength"></b>
+                </label>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar align-title="left" class="bar-royal">
+        <div class="buttons">
+            <button class="button button-energized footer-btn" ng-click="prevPage()">Home</button>
+        </div>
+        <h1 class="title"></h1>
+        <div class="buttons">
+            <button class="button button-energized footer-btn" ng-click="calculateResult()">Calculate</button>
+        </div>
+    </ion-footer-bar>
+</ion-view>

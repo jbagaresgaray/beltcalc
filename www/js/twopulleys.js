@@ -34,10 +34,10 @@
                     controller: 'DashCtrl',
                     cache: false
                 })
-                .state('twopulleys-result', {
-                    url: '/twopulleysresult',
-                    templateUrl: 'templates/two_pulley/result.html',
-                    controller: 'DashResultCtrl',
+                .state('twopulleys-calculation', {
+                    url: '/twopulleyscalculation',
+                    templateUrl: 'templates/two_pulley/calculation.html',
+                    controller: 'DashCalcCtrl',
                     cache: false
                 });
         }]);

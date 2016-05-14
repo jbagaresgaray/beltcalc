@@ -50,7 +50,7 @@
 
                     var sumTotal = (center + large + small);
 
-                    return parseFloat((sumTotal - 2)).toFixed(4);
+                    return Math.max(0, parseFloat((sumTotal - 2))).toFixed(4);
                 }
             };
         }])

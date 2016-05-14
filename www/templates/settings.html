@@ -1,0 +1,13 @@
+<ion-view view-title="{{navTitle}}" class="blue"x>
+    <ion-nav-buttons side="secondary">
+        <button class="button icon ion-checkmark" ng-click="saveSetting()">
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="padding">
+        <h5 class="text-center padding-top">Choose the default view when computing</h5>
+        <ion-list>
+            <ion-radio ng-model="filter" ng-click="filter =='steps'" ng-value="'steps'">Step By Step</ion-radio>
+            <ion-radio ng-model="filter" ng-click="filter =='result'" ng-value="'result'">Direct Calculation</ion-radio>
+        </ion-list>
+    </ion-content>
+</ion-view>
