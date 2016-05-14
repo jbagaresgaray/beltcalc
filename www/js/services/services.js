@@ -9,7 +9,6 @@
             return {
                 pagesArr: function() {
                     return [
-                        'twopulleys-01',
                         'twopulleys-02',
                         'twopulleys-03',
                         'twopulleys-04',
@@ -55,7 +54,6 @@
             return {
                 pagesArr: function() {
                     return [
-                        'threepulleys-01',
                         'threepulleys-02',
                         'threepulleys-03',
                         'threepulleys-04',

@@ -24,10 +24,7 @@
         $scope.beltLength = 0;
 
 
-        if (currentStateName == 'threepulleys-01') {
-            $scope.nextTitle = 'Next';
-
-        } else if (currentStateName == 'threepulleys-02') {
+        if (currentStateName == 'threepulleys-02') {
             $scope.pulleyCenter1 = ThreePullyCalculator.getPulleyCenterDistance1();
             $scope.nextTitle = 'Next';
 
@@ -60,10 +57,8 @@
             $scope.mediumDiameter = ThreePullyCalculator.calculatePulleyDiameter(ThreePullyCalculator.getMediumPulleyDiameter());
             $scope.smallDiameter = ThreePullyCalculator.calculatePulleyDiameter(ThreePullyCalculator.getSmallPulleyDiameter());
 
-            $scope.beltLength = ThreePullyCalculator.calculateBeltLength($scope.pulleyCenter1, $scope.pulleyCenter2, $scope.pulleyCenter3, 
+            $scope.beltLength = ThreePullyCalculator.calculateBeltLength($scope.pulleyCenter1, $scope.pulleyCenter2, $scope.pulleyCenter3,
                 $scope.largeDiameter, $scope.mediumDiameter, $scope.smallDiameter);
-
-            console.log('$scope.beltLength: ',$scope.beltLength);
 
             $scope.nextTitle = 'Re-Calculate';
         }
@@ -95,7 +90,7 @@
 
 
         $scope.nextPage = function() {
-            if ($ionicHistory.currentStateName() !== ThreePullyCalculator.pagesArr()[7]) {
+            if ($ionicHistory.currentStateName() !== ThreePullyCalculator.pagesArr()[6]) {
 
                 if (currentStateName == 'threepulleys-02') {
                     ThreePullyCalculator.setPulleyCenterDistance1($scope.pulleyCenter1);
@@ -130,7 +125,7 @@
                 ThreePullyCalculator.setMediumPulleyDiameter(0);
                 ThreePullyCalculator.setSmallPulleyDiameter(0);
 
-                $state.go('threepulleys-01');
+                $state.go('threepulleys-02');
             }
         };
 
@@ -149,7 +144,7 @@
                 ThreePullyCalculator.setLargePulleyDiameter(0);
                 ThreePullyCalculator.setMediumPulleyDiameter(0);
                 ThreePullyCalculator.setSmallPulleyDiameter(0);
-                
+
                 $state.go('tab');
             }
         };

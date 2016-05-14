@@ -17,9 +17,7 @@
         $scope.largeDiameter = 0;
         $scope.beltLength = 0;
 
-        if (currentStateName == 'twopulleys-01') {
-            $scope.nextTitle = 'Next';
-        } else if (currentStateName == 'twopulleys-02') {
+        if (currentStateName == 'twopulleys-02') {
             $scope.pulleyCenter = TwoPullyCalculator.getPulleyCenterDistance();
             $scope.nextTitle = 'Next';
         } else if (currentStateName == 'twopulleys-03') {
@@ -51,7 +49,7 @@
         };
 
         $scope.nextPage = function() {
-            if ($ionicHistory.currentStateName() !== TwoPullyCalculator.pagesArr()[4]) {
+            if ($ionicHistory.currentStateName() !== TwoPullyCalculator.pagesArr()[3]) {
                 if (currentStateName == 'twopulleys-02') {
                     TwoPullyCalculator.setPulleyCenterDistance($scope.pulleyCenter);
                 } else if (currentStateName == 'twopulleys-03') {
@@ -71,7 +69,7 @@
                 TwoPullyCalculator.setLargePulleyDiameter(0);
                 TwoPullyCalculator.setSmallPulleyDiameter(0);
 
-                $state.go('twopulleys-01');
+                $state.go('twopulleys-02');
             }
         };
 
