@@ -39,8 +39,7 @@
                 })
                 .state('settings', {
                     url: '/settings',
-                    templateUrl: 'templates/settings.html',
-                    controller: 'SettingsCtrl'
+                    templateUrl: 'templates/settings.html'
                 });
 
             $urlRouterProvider.otherwise('/tab');
@@ -64,21 +63,52 @@
                 });
             }
 
-        }])
-        .controller('SettingsCtrl', ['$scope', '$state', 'localStorageService', function($scope, $state, localStorageService) {
-
-            $scope.filter = localStorageService.get('isResult') ? localStorageService.get('isResult') : 'result';
-
-
-            $scope.$watch('filter', function(newValue) {
-                console.info('filter: ', newValue);
-            });
-
-            $scope.saveSetting = function() {
-                console.info('saveSetting: ', $scope.filter);
-                localStorageService.set('isResult', $scope.filter);
+            $scope.gotoTwoPulleys = function() {
+                var settings = localStorageService.get('isResult');
+                if (settings == 'result') {
+                    $state.go('twopulleys-calculation');
+                } else {
+                    $state.go('twopulleys-02');
+                }
             };
 
-        }]);
+
+            $scope.gotoThreePulleys = function() {
+               var settings = localStorageService.get('isResult');
+                if (settings == 'result') {
+                    $state.go('threepulleys-calculation');
+                } else {
+                    $state.go('threepulleys-02');
+                }
+            };
+
+        }])
+        .controller('SettingsCtrl', ['$scope', '$state', 'localStorageService', '$ionicPopup',
+            function($scope, $state, localStorageService, $ionicPopup) {
+
+                $scope.clientSideList = [{
+                    text: 'Step by Step',
+                    value: 'step'
+                }, {
+                    text: 'Direct Calculation',
+                    value: 'result'
+                }];
+
+                $scope.data = {
+                    clientSide: localStorageService.get('isResult') ? localStorageService.get('isResult') : 'result'
+                };
+
+                $scope.saveSetting = function() {
+                    console.info('saveSetting: ', $scope.data.clientSide);
+                    localStorageService.set('isResult', $scope.data.clientSide);
+
+                    $ionicPopup.alert({
+                        title: 'Settings',
+                        template: 'Default View updated!!'
+                    });
+                };
+
+            }
+        ]);
 
 })();
