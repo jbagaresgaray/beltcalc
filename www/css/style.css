@@ -45,19 +45,14 @@
     color: #b24826 !important;
 }
 
-.bar-footer {
-    height: 60px;
-}
 
 .footer-btn {
-    padding: 10px 16px !important;
-    font-size: 18px !important;
+    font-size: 16px !important;
     line-height: 1.3333333 !important;
     border-radius: 6px !important;
     background-color: #b24826;
     color: #f3f3f3;
-    width: 140px;
-    margin-top: 5px;
+    width: 130px;
     border-color: #0a1f38;
 }
 
