@@ -29,20 +29,33 @@
         ])
         .config(['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
-            $ionicConfigProvider.backButton.text('Back').icon('ion-chevron-left');
+            $ionicConfigProvider.backButton.text('').icon('ion-chevron-left');
 
             $stateProvider
-                .state('tab', {
-                    url: '/tab',
-                    templateUrl: 'templates/tabs.html',
-                    controller: 'AppCtrl'
+                .state('app', {
+                    url: '/app',
+                    abstract: true,
+                    templateUrl: 'templates/menu.html'
                 })
-                .state('settings', {
+                .state('app.tab', {
+                    url: '/tab',
+                    views: {
+                        'menuContent': {
+                            templateUrl: 'templates/tabs.html',
+                            controller: 'AppCtrl'
+                        }
+                    }
+                })
+                .state('app.settings', {
                     url: '/settings',
-                    templateUrl: 'templates/settings.html'
+                    views:{
+                        'menuContent':{
+                            templateUrl: 'templates/settings.html'
+                        }
+                    }
                 });
 
-            $urlRouterProvider.otherwise('/tab');
+            $urlRouterProvider.otherwise('/app/tab');
 
         }])
         .controller('AppCtrl', ['$scope', '$state', 'localStorageService', '$ionicPopup', function($scope, $state, localStorageService, $ionicPopup) {
@@ -58,7 +71,7 @@
 
                 confirmPopup.then(function(res) {
                     if (res) {
-                        $state.go('settings');
+                        $state.go('app.settings');
                     }
                 });
             }
@@ -66,19 +79,19 @@
             $scope.gotoTwoPulleys = function() {
                 var settings = localStorageService.get('isResult');
                 if (settings == 'result') {
-                    $state.go('twopulleys-calculation');
+                    $state.go('app.twopulleys-calculation');
                 } else {
-                    $state.go('twopulleys-02');
+                    $state.go('app.twopulleys-02');
                 }
             };
 
 
             $scope.gotoThreePulleys = function() {
-               var settings = localStorageService.get('isResult');
+                var settings = localStorageService.get('isResult');
                 if (settings == 'result') {
-                    $state.go('threepulleys-calculation');
+                    $state.go('app.threepulleys-calculation');
                 } else {
-                    $state.go('threepulleys-02');
+                    $state.go('app.threepulleys-02');
                 }
             };
 
@@ -99,7 +112,6 @@
                 };
 
                 $scope.saveSetting = function() {
-                    console.info('saveSetting: ', $scope.data.clientSide);
                     localStorageService.set('isResult', $scope.data.clientSide);
 
                     $ionicPopup.alert({

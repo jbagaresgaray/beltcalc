@@ -24,31 +24,31 @@
         $scope.beltLength = 0;
 
 
-        if (currentStateName == 'threepulleys-02') {
+        if (currentStateName == 'app.threepulleys-02') {
             $scope.pulleyCenter1 = ThreePullyCalculator.getPulleyCenterDistance1();
             $scope.nextTitle = 'Next';
 
-        } else if (currentStateName == 'threepulleys-03') {
+        } else if (currentStateName == 'app.threepulleys-03') {
             $scope.pulleyCenter2 = ThreePullyCalculator.getPulleyCenterDistance2();
             $scope.nextTitle = 'Next';
 
-        } else if (currentStateName == 'threepulleys-04') {
+        } else if (currentStateName == 'app.threepulleys-04') {
             $scope.pulleyCenter3 = ThreePullyCalculator.getPulleyCenterDistance3();
             $scope.nextTitle = 'Next';
 
-        } else if (currentStateName == 'threepulleys-05') {
+        } else if (currentStateName == 'app.threepulleys-05') {
             $scope.largeDiameter = ThreePullyCalculator.getLargePulleyDiameter();
             $scope.nextTitle = 'Next';
 
-        } else if (currentStateName == 'threepulleys-06') {
+        } else if (currentStateName == 'app.threepulleys-06') {
             $scope.mediumDiameter = ThreePullyCalculator.getMediumPulleyDiameter();
             $scope.nextTitle = 'Next';
 
-        } else if (currentStateName == 'threepulleys-07') {
+        } else if (currentStateName == 'app.threepulleys-07') {
             $scope.smallDiameter = ThreePullyCalculator.getSmallPulleyDiameter();
             $scope.nextTitle = 'Next';
 
-        } else if (currentStateName == 'threepulleys-08') {
+        } else if (currentStateName == 'app.threepulleys-08') {
             $scope.pulleyCenter1 = ThreePullyCalculator.calculatePulleyCenter(ThreePullyCalculator.getPulleyCenterDistance1());
             $scope.pulleyCenter2 = ThreePullyCalculator.calculatePulleyCenter(ThreePullyCalculator.getPulleyCenterDistance2());
             $scope.pulleyCenter3 = ThreePullyCalculator.calculatePulleyCenter(ThreePullyCalculator.getPulleyCenterDistance3());
@@ -108,22 +108,22 @@
         $scope.nextPage = function() {
             if ($ionicHistory.currentStateName() !== ThreePullyCalculator.pagesArr()[6]) {
 
-                if (currentStateName == 'threepulleys-02') {
+                if (currentStateName == 'app.threepulleys-02') {
                     ThreePullyCalculator.setPulleyCenterDistance1($scope.pulleyCenter1);
 
-                } else if (currentStateName == 'threepulleys-03') {
+                } else if (currentStateName == 'app.threepulleys-03') {
                     ThreePullyCalculator.setPulleyCenterDistance2($scope.pulleyCenter2);
 
-                } else if (currentStateName == 'threepulleys-04') {
+                } else if (currentStateName == 'app.threepulleys-04') {
                     ThreePullyCalculator.setPulleyCenterDistance3($scope.pulleyCenter3);
 
-                } else if (currentStateName == 'threepulleys-05') {
+                } else if (currentStateName == 'app.threepulleys-05') {
                     ThreePullyCalculator.setLargePulleyDiameter($scope.largeDiameter);
 
-                } else if (currentStateName == 'threepulleys-06') {
+                } else if (currentStateName == 'app.threepulleys-06') {
                     ThreePullyCalculator.setMediumPulleyDiameter($scope.mediumDiameter);
 
-                } else if (currentStateName == 'threepulleys-07') {
+                } else if (currentStateName == 'app.threepulleys-07') {
                     ThreePullyCalculator.setSmallPulleyDiameter($scope.smallDiameter);
                 }
 
@@ -163,7 +163,7 @@
                 ThreePullyCalculator.setMediumPulleyDiameter(0);
                 ThreePullyCalculator.setSmallPulleyDiameter(0);
 
-                $state.go('tab');
+                $state.go('app.tab');
             }
         };
     }

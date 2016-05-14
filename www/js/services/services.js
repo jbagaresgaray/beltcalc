@@ -9,10 +9,10 @@
             return {
                 pagesArr: function() {
                     return [
-                        'twopulleys-02',
-                        'twopulleys-03',
-                        'twopulleys-04',
-                        'twopulleys-05'
+                        'app.twopulleys-02',
+                        'app.twopulleys-03',
+                        'app.twopulleys-04',
+                        'app.twopulleys-05'
                     ];
                 },
                 setPulleyCenterDistance: function(value) {
@@ -58,13 +58,13 @@
             return {
                 pagesArr: function() {
                     return [
-                        'threepulleys-02',
-                        'threepulleys-03',
-                        'threepulleys-04',
-                        'threepulleys-05',
-                        'threepulleys-06',
-                        'threepulleys-07',
-                        'threepulleys-08',
+                        'app.threepulleys-02',
+                        'app.threepulleys-03',
+                        'app.threepulleys-04',
+                        'app.threepulleys-05',
+                        'app.threepulleys-06',
+                        'app.threepulleys-07',
+                        'app.threepulleys-08',
                     ];
                 },
                 setPulleyCenterDistance1: function(value) {

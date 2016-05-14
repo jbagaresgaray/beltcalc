@@ -73,7 +73,7 @@
             ThreePullyCalculator.setMediumPulleyDiameter(0);
             ThreePullyCalculator.setSmallPulleyDiameter(0);
 
-            $state.go('tab');
+            $state.go('app.tab');
         };
     }
 

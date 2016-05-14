@@ -17,16 +17,16 @@
         $scope.largeDiameter = 0;
         $scope.beltLength = 0;
 
-        if (currentStateName == 'twopulleys-02') {
+        if (currentStateName == 'app.twopulleys-02') {
             $scope.pulleyCenter = TwoPullyCalculator.getPulleyCenterDistance();
             $scope.nextTitle = 'Next';
-        } else if (currentStateName == 'twopulleys-03') {
+        } else if (currentStateName == 'app.twopulleys-03') {
             $scope.largeDiameter = TwoPullyCalculator.getLargePulleyDiameter();
             $scope.nextTitle = 'Next';
-        } else if (currentStateName == 'twopulleys-04') {
+        } else if (currentStateName == 'app.twopulleys-04') {
             $scope.smallDiameter = TwoPullyCalculator.getSmallPulleyDiameter();
             $scope.nextTitle = 'Next';
-        } else if (currentStateName == 'twopulleys-05') {
+        } else if (currentStateName == 'app.twopulleys-05') {
             $scope.pulleyCenter = TwoPullyCalculator.getPulleyCenterDistance();
             $scope.largeDiameter = TwoPullyCalculator.getLargePulleyDiameter();
             $scope.smallDiameter = TwoPullyCalculator.getSmallPulleyDiameter();
@@ -64,11 +64,11 @@
 
         $scope.nextPage = function() {
             if ($ionicHistory.currentStateName() !== TwoPullyCalculator.pagesArr()[3]) {
-                if (currentStateName == 'twopulleys-02') {
+                if (currentStateName == 'app.twopulleys-02') {
                     TwoPullyCalculator.setPulleyCenterDistance($scope.pulleyCenter);
-                } else if (currentStateName == 'twopulleys-03') {
+                } else if (currentStateName == 'app.twopulleys-03') {
                     TwoPullyCalculator.setLargePulleyDiameter($scope.largeDiameter);
-                } else if (currentStateName == 'twopulleys-04') {
+                } else if (currentStateName == 'app.twopulleys-04') {
                     TwoPullyCalculator.setSmallPulleyDiameter($scope.smallDiameter);
                 }
 
@@ -102,7 +102,7 @@
                 TwoPullyCalculator.setLargePulleyDiameter(0);
                 TwoPullyCalculator.setSmallPulleyDiameter(0);
 
-                $state.go('tab');
+                $state.go('app.tab');
             }
         };
     }

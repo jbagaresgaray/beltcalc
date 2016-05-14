@@ -45,7 +45,7 @@
             TwoPullyCalculator.setLargePulleyDiameter(0);
             TwoPullyCalculator.setSmallPulleyDiameter(0);
 
-            $state.go('tab');
+            $state.go('app.tab');
         };
     }
 })();
