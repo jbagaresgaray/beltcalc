@@ -16,7 +16,7 @@
                     }
                 });
 
-                $rootScope.navTitle = '<img class="title-image" src="img/beltcalc-logo.png">';
+                $rootScope.navTitle = '<img class="title-image" src="img/vbeltcalc-logo.png" style="height:35px;">';
 
                 $rootScope.$on("$ionicView.enter", function(scopes, states) {
                     if (states.stateName == 'tab') {
@@ -50,7 +50,8 @@
                     url: '/settings',
                     views:{
                         'menuContent':{
-                            templateUrl: 'templates/settings.html'
+                            templateUrl: 'templates/settings.html',
+                            controller: 'SettingsCtrl'
                         }
                     }
                 });
@@ -95,32 +96,6 @@
                 }
             };
 
-        }])
-        .controller('SettingsCtrl', ['$scope', '$state', 'localStorageService', '$ionicPopup',
-            function($scope, $state, localStorageService, $ionicPopup) {
-
-                $scope.clientSideList = [{
-                    text: 'Step by Step',
-                    value: 'step'
-                }, {
-                    text: 'Direct Calculation',
-                    value: 'result'
-                }];
-
-                $scope.data = {
-                    clientSide: localStorageService.get('isResult') ? localStorageService.get('isResult') : 'result'
-                };
-
-                $scope.saveSetting = function() {
-                    localStorageService.set('isResult', $scope.data.clientSide);
-
-                    $ionicPopup.alert({
-                        title: 'Settings',
-                        template: 'Default View updated!!'
-                    });
-                };
-
-            }
-        ]);
+        }]);
 
 })();
