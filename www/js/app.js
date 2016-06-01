@@ -61,21 +61,21 @@
         }])
         .controller('AppCtrl', ['$scope', '$state', 'localStorageService', '$ionicPopup', function($scope, $state, localStorageService, $ionicPopup) {
 
-            var resultPage = localStorageService.get('isResult'),
-                isResult = resultPage ? resultPage : null;
+            // var resultPage = localStorageService.get('isResult'),
+            //     isResult = resultPage ? resultPage : null;
 
-            if (!isResult) {
-                var confirmPopup = $ionicPopup.confirm({
-                    title: 'Set default calculation view',
-                    template: 'Would like to set default calculation view'
-                });
+            // if (!isResult) {
+            //     var confirmPopup = $ionicPopup.confirm({
+            //         title: 'Set default calculation view',
+            //         template: 'Would like to set default calculation view'
+            //     });
 
-                confirmPopup.then(function(res) {
-                    if (res) {
-                        $state.go('app.settings');
-                    }
-                });
-            }
+            //     confirmPopup.then(function(res) {
+            //         if (res) {
+            //             $state.go('app.settings');
+            //         }
+            //     });
+            // }
 
             $scope.gotoTwoPulleys = function() {
                 var settings = localStorageService.get('isResult');

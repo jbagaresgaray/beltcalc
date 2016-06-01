@@ -14,7 +14,7 @@
                 }];
 
                 $scope.data = {
-                    clientSide: localStorageService.get('isResult') ? localStorageService.get('isResult') : 'result'
+                    clientSide: localStorageService.get('isResult') ? localStorageService.get('isResult') : 'step'
                 };
 
                 $scope.serverSideChange = function(item){
