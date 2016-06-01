@@ -5,26 +5,30 @@
         .controller('ChatsCalcCtrl', ChatsCalcCtrl);
 
 
-    ChatsCalcCtrl.$inject = ['_', '$scope', '$state', '$ionicHistory', '$ionicViewSwitcher', 'ThreePullyCalculator'];
+    ChatsCalcCtrl.$inject = ['_', '$scope', '$state', '$ionicHistory', '$ionicViewSwitcher', 'ThreePullyCalculator', 'localStorageService'];
 
-    function ChatsCalcCtrl(_, $scope, $state, $ionicHistory, $ionicViewSwitcher, ThreePullyCalculator) {
+    function ChatsCalcCtrl(_, $scope, $state, $ionicHistory, $ionicViewSwitcher, ThreePullyCalculator, localStorageService) {
 
-        $scope.pulleyCenter1 = 0;
-        $scope.pulleyCenter2 = 0;
-        $scope.pulleyCenter3 = 0;
+        $scope.$on("$ionicView.enter", function(scopes, states) {
+            $scope.pulleyCenter1 = 0;
+            $scope.pulleyCenter2 = 0;
+            $scope.pulleyCenter3 = 0;
 
-        $scope.largeDiameter = 0;
-        $scope.mediumDiameter = 0;
-        $scope.smallDiameter = 0;
+            $scope.largeDiameter = 0;
+            $scope.mediumDiameter = 0;
+            $scope.smallDiameter = 0;
 
-        $scope.beltLength = 0;
+            $scope.beltLength = 0;
 
-        $scope.showCalculate = ($state.params.recal == 'true') ? true : false;
+            $scope.showCalculate = ($state.params.recal == 'true') ? true : false;
+
+            $scope.measuringUnits = localStorageService.get('isMeasure');
+        });
 
         $scope.pulleyCenterChange1 = function(newValue) {
             $scope.pulleyCenter1 = newValue;
 
-            if(!$scope.showCalculate){
+            if (!$scope.showCalculate) {
                 $scope.calculateResult();
             }
         };
@@ -32,7 +36,7 @@
         $scope.pulleyCenterChange2 = function(newValue) {
             $scope.pulleyCenter2 = newValue;
 
-            if(!$scope.showCalculate){
+            if (!$scope.showCalculate) {
                 $scope.calculateResult();
             }
         };
@@ -40,7 +44,7 @@
         $scope.pulleyCenterChange3 = function(newValue) {
             $scope.pulleyCenter3 = newValue;
 
-            if(!$scope.showCalculate){
+            if (!$scope.showCalculate) {
                 $scope.calculateResult();
             }
         };
@@ -48,7 +52,7 @@
         $scope.smallDiameterChange = function(newValue) {
             $scope.smallDiameter = newValue;
 
-            if(!$scope.showCalculate){
+            if (!$scope.showCalculate) {
                 $scope.calculateResult();
             }
         };
@@ -56,7 +60,7 @@
         $scope.mediumDiameterChange = function(newValue) {
             $scope.mediumDiameter = newValue;
 
-            if(!$scope.showCalculate){
+            if (!$scope.showCalculate) {
                 $scope.calculateResult();
             }
         };
@@ -64,7 +68,7 @@
         $scope.largeDiameterChange = function(newValue) {
             $scope.largeDiameter = newValue;
 
-            if(!$scope.showCalculate){
+            if (!$scope.showCalculate) {
                 $scope.calculateResult();
             }
         };

@@ -34,12 +34,26 @@
                     return localStorageService.get('largeDiameter') || 0;
                 },
                 calculatePulleyCenter: function(center) {
-                    return parseFloat((center * 2)).toFixed(4);
+                    var measuringUnits = localStorageService.get('isMeasure');
+                    if (measuringUnits == 'standard') {
+                        return parseFloat((center * 2)).toFixed(4);
+                    } else {
+                        return parseFloat(((center * 2) * 25.4)).toFixed(4);
+                    }
                 },
                 calculatePulleyDiameter: function(diameter) {
-                    return parseFloat(((Math.PI * diameter) / 2)).toFixed(4);
+                    console.log('Math.PI: ', Math.PI);
+                    var measuringUnits = localStorageService.get('isMeasure');
+                    if (measuringUnits == 'standard') {
+                        return parseFloat(((Math.PI * diameter) / 2)).toFixed(4);
+                    } else {
+                        return parseFloat(((diameter * 25.4) * Math.PI) / 2).toFixed(4);
+                    }
                 },
                 calculateBeltLength: function(center, large, small) {
+                    var measuringUnits = localStorageService.get('isMeasure');
+
+                    console.log(':======================:');
                     console.log('center: ', center);
                     console.log('large: ', large);
                     console.log('small: ', small);
@@ -50,7 +64,14 @@
 
                     var sumTotal = (center + large + small);
 
-                    return Math.max(0, parseFloat((sumTotal - 2))).toFixed(4);
+                    console.log('allTotal: ', sumTotal);
+                    console.log(':======================:');
+                    
+                    if (measuringUnits == 'standard') {
+                        return Math.max(0, parseFloat((sumTotal - 2))).toFixed(3);
+                    } else {
+                        return Math.max(0, parseFloat((sumTotal - 50.8) / 10)).toFixed(3);
+                    }
                 }
             };
         }])
@@ -104,12 +125,25 @@
                     return localStorageService.get('largeDiameter') || 0;
                 },
                 calculatePulleyCenter: function(center) {
-                    return parseFloat((center * 2)).toFixed(4);
+                    var measuringUnits = localStorageService.get('isMeasure');
+                    if (measuringUnits == 'standard') {
+                        return parseFloat((center * 2)).toFixed(4);
+                    } else {
+                        return parseFloat(((center * 2) * 25.4)).toFixed(4);
+                    }
                 },
                 calculatePulleyDiameter: function(diameter) {
-                    return parseFloat(((Math.PI * diameter) / 2)).toFixed(4);
+                    console.log('Math.PI: ', Math.PI);
+                    var measuringUnits = localStorageService.get('isMeasure');
+                    if (measuringUnits == 'standard') {
+                        return parseFloat(((Math.PI * diameter) / 2)).toFixed(4);
+                    } else {
+                        return parseFloat(((diameter * 25.4) * Math.PI) / 2).toFixed(4);
+                    }
                 },
                 calculateBeltLength: function(center1, center2, center3, large, medium, small) {
+                    var measuringUnits = localStorageService.get('isMeasure');
+                    console.log(':======================:');
                     console.log('center1: ', center1);
                     console.log('center2: ', center2);
                     console.log('center3: ', center3);
@@ -126,10 +160,16 @@
                     medium = parseFloat(medium);
                     small = parseFloat(small);
 
-                    var sumCenterTotal = (center1 + center2 + center3);
-                    var sumTotal = (large + medium + small);
+                    var sumCenterTotal = (center1 + center2 + center3) + (large + medium + small);
 
-                    return Math.max(0, parseFloat(((sumCenterTotal + sumTotal) - 2))).toFixed(4);
+                    console.log('allTotal: ', sumCenterTotal);
+                    console.log(':======================:');
+
+                    if (measuringUnits == 'standard') {
+                        return Math.max(0, parseFloat((sumCenterTotal - 2))).toFixed(3);
+                    } else {
+                        return Math.max(0, parseFloat((sumCenterTotal - 50.8) / 10)).toFixed(3);
+                    }
                 }
             };
         }]);

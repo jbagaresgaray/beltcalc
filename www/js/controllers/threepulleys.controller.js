@@ -5,9 +5,9 @@
         .controller('ChatsCtrl', ChatsCtrl);
 
 
-    ChatsCtrl.$inject = ['_', '$scope', '$state', '$ionicHistory', '$ionicViewSwitcher', 'ThreePullyCalculator'];
+    ChatsCtrl.$inject = ['_', '$scope', '$state', '$ionicHistory', '$ionicViewSwitcher', 'ThreePullyCalculator', 'localStorageService'];
 
-    function ChatsCtrl(_, $scope, $state, $ionicHistory, $ionicViewSwitcher, ThreePullyCalculator) {
+    function ChatsCtrl(_, $scope, $state, $ionicHistory, $ionicViewSwitcher, ThreePullyCalculator, localStorageService) {
         var currentStateName = $ionicHistory.currentStateName();
         var currentPage;
 
