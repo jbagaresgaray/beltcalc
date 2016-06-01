@@ -4,18 +4,25 @@
     angular.module('starter')
         .controller('DashCtrl', DashCtrl);
 
-    DashCtrl.$inject = ['_', '$scope', '$state', '$ionicHistory', '$ionicViewSwitcher', 'TwoPullyCalculator'];
+    DashCtrl.$inject = ['_', '$scope', '$state', '$ionicHistory', '$ionicViewSwitcher', 'TwoPullyCalculator', 'localStorageService'];
 
-    function DashCtrl(_, $scope, $state, $ionicHistory, $ionicViewSwitcher, TwoPullyCalculator) {
+    function DashCtrl(_, $scope, $state, $ionicHistory, $ionicViewSwitcher, TwoPullyCalculator, localStorageService) {
         var currentStateName = $ionicHistory.currentStateName();
-        var currentPage = _.findIndex(TwoPullyCalculator.pagesArr(), function(o) {
-            return o == currentStateName;
-        });
+        var currentPage;
 
-        $scope.pulleyCenter = 0;
-        $scope.smallDiameter = 0;
-        $scope.largeDiameter = 0;
-        $scope.beltLength = 0;
+
+        $scope.$on("$ionicView.enter", function(scopes, states) {
+            $scope.pulleyCenter = 0;
+            $scope.smallDiameter = 0;
+            $scope.largeDiameter = 0;
+            $scope.beltLength = 0;
+
+            currentPage = _.findIndex(TwoPullyCalculator.pagesArr(), function(o) {
+                return o == currentStateName;
+            });
+
+            $scope.measuringUnits = localStorageService.get('isMeasure');
+        });
 
         if (currentStateName == 'app.twopulleys-02') {
             $scope.pulleyCenter = TwoPullyCalculator.getPulleyCenterDistance();

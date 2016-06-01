@@ -9,19 +9,25 @@
 
     function ChatsCtrl(_, $scope, $state, $ionicHistory, $ionicViewSwitcher, ThreePullyCalculator) {
         var currentStateName = $ionicHistory.currentStateName();
-        var currentPage = _.findIndex(ThreePullyCalculator.pagesArr(), function(o) {
-            return o == currentStateName;
+        var currentPage;
+
+        $scope.$on("$ionicView.enter", function(scopes, states) {
+            $scope.pulleyCenter1 = 0;
+            $scope.pulleyCenter2 = 0;
+            $scope.pulleyCenter3 = 0;
+
+            $scope.largeDiameter = 0;
+            $scope.mediumDiameter = 0;
+            $scope.smallDiameter = 0;
+
+            $scope.beltLength = 0;
+
+            currentPage = _.findIndex(ThreePullyCalculator.pagesArr(), function(o) {
+                return o == currentStateName;
+            });
+
+            $scope.measuringUnits = localStorageService.get('isMeasure');
         });
-
-        $scope.pulleyCenter1 = 0;
-        $scope.pulleyCenter2 = 0;
-        $scope.pulleyCenter3 = 0;
-
-        $scope.largeDiameter = 0;
-        $scope.mediumDiameter = 0;
-        $scope.smallDiameter = 0;
-
-        $scope.beltLength = 0;
 
 
         if (currentStateName == 'app.threepulleys-02') {

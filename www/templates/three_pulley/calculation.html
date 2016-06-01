@@ -14,6 +14,12 @@
             <div class="item item-input-inset">
                 <label class="item item-input-wrapper">
                     <input type="text" placeholder="Distance Between Pulley A and Pulley B" ng-model="pulleyCenter1" ng-change="pulleyCenterChange1(pulleyCenter1)">
+                    <span class="item-note" ng-show="measuringUnits=='standard'">
+                      Inches
+                    </span>
+                    <span class="item-note" ng-show="measuringUnits=='metric'">
+                      Metric
+                    </span>
                 </label>
             </div>
             <div class="item item-divider cream text-center">
@@ -22,6 +28,12 @@
             <div class="item item-input-inset">
                 <label class="item item-input-wrapper">
                     <input type="text" placeholder="Distance Between Pulley B and Pulley C" ng-model="pulleyCenter2" ng-change="pulleyCenterChange2(pulleyCenter2)">
+                    <span class="item-note" ng-show="measuringUnits=='standard'">
+                      Inches
+                    </span>
+                    <span class="item-note" ng-show="measuringUnits=='metric'">
+                      Metric
+                    </span>
                 </label>
             </div>
             <div class="item item-divider cream text-center">
@@ -30,6 +42,12 @@
             <div class="item item-input-inset">
                 <label class="item item-input-wrapper">
                     <input type="text" placeholder="Distance Between Pulley C and Pulley A" ng-model="pulleyCenter3" ng-change="pulleyCenterChange3(pulleyCenter3)">
+                    <span class="item-note" ng-show="measuringUnits=='standard'">
+                      Inches
+                    </span>
+                    <span class="item-note" ng-show="measuringUnits=='metric'">
+                      Metric
+                    </span>
                 </label>
             </div>
             <div class="item item-divider cream text-center">
@@ -38,6 +56,12 @@
             <div class="item item-input-inset">
                 <label class="item item-input-wrapper">
                      <input type="text" placeholder="Pulley A's outside diameter" ng-model="largeDiameter" ng-change="largeDiameterChange(largeDiameter)"> 
+                     <span class="item-note" ng-show="measuringUnits=='standard'">
+                      Inches
+                    </span>
+                    <span class="item-note" ng-show="measuringUnits=='metric'">
+                      Metric
+                    </span>
                 </label>
             </div>
             <div class="item item-divider cream text-center">
@@ -46,6 +70,12 @@
             <div class="item item-input-inset">
                 <label class="item item-input-wrapper">
                     <input type="text" placeholder="Pulley B's outside diameter" ng-model="mediumDiameter" ng-change="mediumDiameterChange(mediumDiameter)">
+                    <span class="item-note" ng-show="measuringUnits=='standard'">
+                      Inches
+                    </span>
+                    <span class="item-note" ng-show="measuringUnits=='metric'">
+                      Metric
+                    </span>
                 </label>
             </div>
             <div class="item item-divider cream text-center">
@@ -54,6 +84,12 @@
             <div class="item item-input-inset">
                 <label class="item item-input-wrapper">
                      <input type="text" placeholder="Pulley C's outside diameter" ng-model="smallDiameter" ng-change="smallDiameterChange(smallDiameter)">
+                     <span class="item-note" ng-show="measuringUnits=='standard'">
+                      Inches
+                    </span>
+                    <span class="item-note" ng-show="measuringUnits=='metric'">
+                      Metric
+                    </span>
                 </label>
             </div>
             <div class="item item-divider cream text-center">
@@ -62,6 +98,12 @@
             <div class="item item-input-inset">
                 <label class="item item-input-wrapper">
                     <b class="total-labels" ng-bind="beltLength"></b>
+                    <span class="item-note" ng-show="measuringUnits=='standard'">
+                      Inches
+                    </span>
+                    <span class="item-note" ng-show="measuringUnits=='metric'">
+                      Metric
+                    </span>
                 </label>
             </div>
         </div>

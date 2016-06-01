@@ -77,6 +77,19 @@
             //     });
             // }
 
+            $scope.$on("$ionicView.enter", function(scopes, states) {
+                console.log('$ionicView.enter');
+                localStorageService.set('pulleyCenter', 0);
+
+                localStorageService.set('pulleyCenter1', 0);
+                localStorageService.set('pulleyCenter2', 0);
+                localStorageService.set('pulleyCenter3', 0);
+
+                localStorageService.set('smallDiameter', 0);
+                localStorageService.set('mediumDiameter', 0);
+                localStorageService.set('largeDiameter', 0);
+            });
+
             $scope.gotoTwoPulleys = function() {
                 var settings = localStorageService.get('isResult');
                 if (settings == 'result') {

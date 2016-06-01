@@ -14,6 +14,12 @@
             <div class="item item-input-inset">
                 <label class="item item-input-wrapper">
                     <input type="number" placeholder="Pulley B's outside diameter" ng-model="mediumDiameter" ng-change="mediumDiameterChange(mediumDiameter)">
+                    <span class="item-note" ng-show="measuringUnits=='standard'">
+                      Inches
+                    </span>
+                    <span class="item-note" ng-show="measuringUnits=='metric'">
+                      Metric
+                    </span>
                 </label>
             </div>
         </div>

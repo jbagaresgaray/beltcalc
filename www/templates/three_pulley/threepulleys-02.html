@@ -15,6 +15,12 @@
             <div class="item item-input-inset">
                 <label class="item item-input-wrapper">
                     <input type="number" placeholder="Distance Between Pulley A and Pulley B" ng-model="pulleyCenter1" ng-change="pulleyCenterChange1(pulleyCenter1)">
+                    <span class="item-note" ng-show="measuringUnits=='standard'">
+                      Inches
+                    </span>
+                    <span class="item-note" ng-show="measuringUnits=='metric'">
+                      Metric
+                    </span>
                 </label>
             </div>
         </div>
