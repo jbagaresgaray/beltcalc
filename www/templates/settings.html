@@ -2,7 +2,11 @@
     <ion-content class="padding">
         <h5 class="text-center padding-top">Choose the default view when computing</h5>
         <ion-list>
-            <ion-radio ng-repeat="item in clientSideList" ng-value="item.value" ng-model="data.clientSide" ng-change="serverSideChange(item)">{{ item.text }}</ion-radio>
+            <ion-radio name="settings" ng-repeat="item in clientSideList" ng-value="item.value" ng-model="data.clientSide" ng-change="serverSideChange(item)">{{ item.text }}</ion-radio>
+        </ion-list>
+        <h5 class="text-center padding-top">Choose the default measuring units</h5>
+        <ion-list>
+            <ion-radio name="unit" ng-repeat="item in clientSideList2" ng-value="item.value" ng-model="data.clientSide2" ng-change="serverSideChange2(item)">{{ item.text }}</ion-radio>
         </ion-list>
     </ion-content>
 </ion-view>
