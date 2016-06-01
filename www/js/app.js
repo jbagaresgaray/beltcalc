@@ -80,7 +80,7 @@
             $scope.gotoTwoPulleys = function() {
                 var settings = localStorageService.get('isResult');
                 if (settings == 'result') {
-                    $state.go('app.twopulleys-calculation', { recal: true });
+                    $state.go('app.twopulleys-calculation', { recal: false });
                 } else {
                     $state.go('app.twopulleys-02');
                 }
@@ -90,7 +90,7 @@
             $scope.gotoThreePulleys = function() {
                 var settings = localStorageService.get('isResult');
                 if (settings == 'result') {
-                    $state.go('app.threepulleys-calculation', { recal: true });
+                    $state.go('app.threepulleys-calculation', { recal: false });
                 } else {
                     $state.go('app.threepulleys-02');
                 }

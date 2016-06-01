@@ -8,6 +8,9 @@
                 $scope.clientSideList = [{
                     text: 'Step by Step',
                     value: 'step'
+                }, {
+                    text: 'Direct Calculation',
+                    value: 'result'
                 }];
 
                 $scope.data = {
@@ -18,17 +21,17 @@
                 $scope.clientSideList2 = [{
                     text: 'Metric Units',
                     value: 'metric'
-                },{
+                }, {
                     text: 'Standard Units',
                     value: 'standard'
                 }];
 
-                $scope.serverSideChange = function(item){
-                	localStorageService.set('isResult', $scope.data.clientSide);
+                $scope.serverSideChange = function(item) {
+                    localStorageService.set('isResult', $scope.data.clientSide);
                 };
 
-                $scope.serverSideChange2 = function(item){
-                	localStorageService.set('isMeasure', $scope.data.clientSide2);
+                $scope.serverSideChange2 = function(item) {
+                    localStorageService.set('isMeasure', $scope.data.clientSide2);
                 };
             }
         ]);
