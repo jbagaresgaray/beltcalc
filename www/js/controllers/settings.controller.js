@@ -8,9 +8,6 @@
                 $scope.clientSideList = [{
                     text: 'Step by Step',
                     value: 'step'
-                }, {
-                    text: 'Direct Calculation',
-                    value: 'result'
                 }];
 
                 $scope.data = {
