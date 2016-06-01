@@ -19,29 +19,54 @@
 
         $scope.beltLength = 0;
 
+        $scope.showCalculate = ($state.params.recal == 'true') ? true : false;
 
         $scope.pulleyCenterChange1 = function(newValue) {
             $scope.pulleyCenter1 = newValue;
+
+            if(!$scope.showCalculate){
+                $scope.calculateResult();
+            }
         };
 
         $scope.pulleyCenterChange2 = function(newValue) {
             $scope.pulleyCenter2 = newValue;
+
+            if(!$scope.showCalculate){
+                $scope.calculateResult();
+            }
         };
 
         $scope.pulleyCenterChange3 = function(newValue) {
             $scope.pulleyCenter3 = newValue;
+
+            if(!$scope.showCalculate){
+                $scope.calculateResult();
+            }
         };
 
         $scope.smallDiameterChange = function(newValue) {
             $scope.smallDiameter = newValue;
+
+            if(!$scope.showCalculate){
+                $scope.calculateResult();
+            }
         };
 
         $scope.mediumDiameterChange = function(newValue) {
             $scope.mediumDiameter = newValue;
+
+            if(!$scope.showCalculate){
+                $scope.calculateResult();
+            }
         };
 
         $scope.largeDiameterChange = function(newValue) {
             $scope.largeDiameter = newValue;
+
+            if(!$scope.showCalculate){
+                $scope.calculateResult();
+            }
         };
 
         $scope.calculateResult = function() {

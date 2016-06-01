@@ -12,17 +12,30 @@
         $scope.largeDiameter = 0;
         $scope.beltLength = 0;
 
-
+        $scope.showCalculate = ($state.params.recal == 'true') ? true : false;
+        
         $scope.pulleyCenterChange = function(newValue) {
             $scope.pulleyCenter = newValue;
+
+            if(!$scope.showCalculate){
+                $scope.calculateResult();
+            }
         };
 
         $scope.smallDiameterChange = function(newValue) {
             $scope.smallDiameter = newValue;
+
+            if(!$scope.showCalculate){
+                $scope.calculateResult();
+            }
         };
 
         $scope.largeDiameterChange = function(newValue) {
             $scope.largeDiameter = newValue;
+
+            if(!$scope.showCalculate){
+                $scope.calculateResult();
+            }
         };
 
         $scope.calculateResult = function() {

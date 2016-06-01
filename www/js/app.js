@@ -48,8 +48,8 @@
                 })
                 .state('app.settings', {
                     url: '/settings',
-                    views:{
-                        'menuContent':{
+                    views: {
+                        'menuContent': {
                             templateUrl: 'templates/settings.html',
                             controller: 'SettingsCtrl'
                         }
@@ -80,7 +80,7 @@
             $scope.gotoTwoPulleys = function() {
                 var settings = localStorageService.get('isResult');
                 if (settings == 'result') {
-                    $state.go('app.twopulleys-calculation');
+                    $state.go('app.twopulleys-calculation', { recal: true });
                 } else {
                     $state.go('app.twopulleys-02');
                 }
@@ -90,7 +90,7 @@
             $scope.gotoThreePulleys = function() {
                 var settings = localStorageService.get('isResult');
                 if (settings == 'result') {
-                    $state.go('app.threepulleys-calculation');
+                    $state.go('app.threepulleys-calculation', { recal: true });
                 } else {
                     $state.go('app.threepulleys-02');
                 }

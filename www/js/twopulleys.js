@@ -50,7 +50,7 @@
                     }
                 })
                 .state('app.twopulleys-calculation', {
-                    url: '/twopulleyscalculation',
+                    url: '/twopulleyscalculation?recal',
                     views: {
                         'menuContent': {
                             templateUrl: 'templates/two_pulley/calculation.html',

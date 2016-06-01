@@ -77,7 +77,7 @@
                     }
                 })
                 .state('app.threepulleys-calculation', {
-                    url: '/threepulleyscalculation',
+                    url: '/threepulleyscalculation?recal',
                     views: {
                         'menuContent': {
                             templateUrl: 'templates/three_pulley/calculation.html',
