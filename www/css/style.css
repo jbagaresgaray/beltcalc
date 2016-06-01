@@ -81,13 +81,13 @@
     width: 100%;
 }
 
-.keyboard-open .tabs {
-    display: none;
-}
+// .keyboard-open .tabs {
+//     display: none;
+// }
 
-.keyboard-open .has-tabs {
-    bottom: 0;
-}
+// .keyboard-open .has-tabs {
+//     bottom: 0;
+// }
 
 .popover {
     height: 115px;
