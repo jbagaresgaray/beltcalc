@@ -35,7 +35,8 @@
                 .state('app', {
                     url: '/app',
                     abstract: true,
-                    templateUrl: 'templates/menu.html'
+                    templateUrl: 'templates/menu.html',
+                    controller: 'MenuCtrl'
                 })
                 .state('app.tab', {
                     url: '/tab',
@@ -57,6 +58,28 @@
                 });
 
             $urlRouterProvider.otherwise('/app/tab');
+
+        }])
+        .controller('MenuCtrl', ['$scope', '$state', 'localStorageService', function($scope, $state, localStorageService) {
+
+
+            $scope.gotoTwoPulleys = function() {
+                var settings = localStorageService.get('isResult');
+                if (settings == 'result') {
+                    $state.go('app.twopulleys-calculation', { recal: false });
+                } else {
+                    $state.go('app.twopulleys-02');
+                }
+            };
+
+            $scope.gotoThreePulleys = function() {
+                var settings = localStorageService.get('isResult');
+                if (settings == 'result') {
+                    $state.go('app.threepulleys-calculation', { recal: false });
+                } else {
+                    $state.go('app.threepulleys-02');
+                }
+            };
 
         }])
         .controller('AppCtrl', ['$scope', '$state', 'localStorageService', '$ionicPopup', function($scope, $state, localStorageService, $ionicPopup) {
@@ -108,7 +131,6 @@
                     $state.go('app.threepulleys-02');
                 }
             };
-
         }]);
 
 })();

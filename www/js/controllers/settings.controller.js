@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('starter')
-        .controller('SettingsCtrl', ['$scope', '$state', 'localStorageService', '$ionicPopup',
-            function($scope, $state, localStorageService, $ionicPopup) {
+        .controller('SettingsCtrl', ['$scope', '$state', 'localStorageService',
+            function($scope, $state, localStorageService) {
 
                 $scope.clientSideList = [{
                     text: 'Step by Step',
@@ -12,6 +12,8 @@
                     text: 'Direct Calculation',
                     value: 'result'
                 }];
+
+                $scope.toggleModel = (localStorageService.get('isResult') == 'step') ? true : false;
 
                 $scope.data = {
                     clientSide: localStorageService.get('isResult') ? localStorageService.get('isResult') : 'step',
@@ -25,6 +27,13 @@
                     text: 'Standard Units',
                     value: 'standard'
                 }];
+
+                $scope.toggleOption = function(value) {
+                    $scope.toggleModel = value;
+                    
+                    var isResult = (value == true) ? 'step' : 'result';
+                    localStorageService.set('isResult', isResult);
+                };
 
                 $scope.serverSideChange = function(item) {
                     localStorageService.set('isResult', $scope.data.clientSide);
