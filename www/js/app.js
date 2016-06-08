@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('starter', ['ionic', 'LocalStorageModule'])
-        .run(['$ionicPlatform', '$rootScope', 'TwoPullyCalculator', 'ThreePullyCalculator',
-            function($ionicPlatform, $rootScope, TwoPullyCalculator, ThreePullyCalculator) {
+        .run(['$ionicPlatform', '$rootScope', '$state', '$ionicPopup', 'TwoPullyCalculator', 'ThreePullyCalculator',
+            function($ionicPlatform, $rootScope, $state, $ionicPopup, TwoPullyCalculator, ThreePullyCalculator) {
                 $ionicPlatform.ready(function() {
                     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
                         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -25,6 +25,15 @@
                         TwoPullyCalculator.setSmallPulleyDiameter(0);
                     }
                 });
+
+                $ionicPlatform.registerBackButtonAction(function(event) {
+                    if ($state.current.name == "app.tab") {
+                        navigator.app.exitApp();
+                    } else {
+                        navigator.app.backHistory();
+                    }
+                }, 100);
+
             }
         ])
         .config(['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
@@ -91,7 +100,7 @@
                 $state.go('app.tab');
             };
         }])
-        .controller('MenuCtrl', ['$scope', '$state', 'localStorageService','$ionicPlatform', function($scope, $state, localStorageService,$ionicPlatform) {
+        .controller('MenuCtrl', ['$scope', '$state', 'localStorageService', '$ionicPlatform', function($scope, $state, localStorageService, $ionicPlatform) {
 
             $ionicPlatform.onHardwareBackButton(function() {
                 event.preventDefault();
