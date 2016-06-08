@@ -55,8 +55,8 @@
             </div>
             <div class="item item-input-inset">
                 <label class="item item-input-wrapper">
-                     <input type="text" placeholder="Pulley A's outside diameter" ng-model="largeDiameter" ng-change="largeDiameterChange(largeDiameter)"> 
-                     <span class="item-note" ng-show="measuringUnits=='standard'">
+                    <input type="text" placeholder="Pulley A's outside diameter" ng-model="largeDiameter" ng-change="largeDiameterChange(largeDiameter)">
+                    <span class="item-note" ng-show="measuringUnits=='standard'">
                       Inches
                     </span>
                     <span class="item-note" ng-show="measuringUnits=='metric'">
@@ -83,8 +83,8 @@
             </div>
             <div class="item item-input-inset">
                 <label class="item item-input-wrapper">
-                     <input type="text" placeholder="Pulley C's outside diameter" ng-model="smallDiameter" ng-change="smallDiameterChange(smallDiameter)">
-                     <span class="item-note" ng-show="measuringUnits=='standard'">
+                    <input type="text" placeholder="Pulley C's outside diameter" ng-model="smallDiameter" ng-change="smallDiameterChange(smallDiameter)">
+                    <span class="item-note" ng-show="measuringUnits=='standard'">
                       Inches
                     </span>
                     <span class="item-note" ng-show="measuringUnits=='metric'">
@@ -108,13 +108,24 @@
             </div>
         </div>
     </ion-content>
-    <ion-footer-bar align-title="left" class="bar-royal">
+    <!-- <ion-footer-bar align-title="left" class="bar-royal">
         <div class="buttons">
             <button class="button button-energized footer-btn" ng-click="prevPage()">Home</button>
         </div>
         <h1 class="title"></h1>
         <div class="buttons">
             <button class="button button-energized footer-btn" ng-show="showCalculate" ng-click="calculateResult()">Calculate</button>
+        </div>
+    </ion-footer-bar> -->
+    <ion-footer-bar align-title="left" class="bar-royal footer-buttons hide-on-keyboard-open">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col">
+                <button class="button button-energized footer-btn" ng-click="prevPage()">Home</button>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
         </div>
     </ion-footer-bar>
 </ion-view>
