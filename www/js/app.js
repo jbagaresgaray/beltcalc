@@ -91,8 +91,13 @@
                 $state.go('app.tab');
             };
         }])
-        .controller('MenuCtrl', ['$scope', '$state', 'localStorageService', function($scope, $state, localStorageService) {
+        .controller('MenuCtrl', ['$scope', '$state', 'localStorageService','$ionicPlatform', function($scope, $state, localStorageService,$ionicPlatform) {
 
+            $ionicPlatform.onHardwareBackButton(function() {
+                event.preventDefault();
+                event.stopPropagation();
+                alert('going back now yall');
+            });
 
             $scope.gotoTwoPulleys = function() {
                 var settings = localStorageService.get('isResult');

@@ -1,29 +1,37 @@
-<ion-view view-title="{{navTitle}}" class="blue">
-    <ion-content>
+<ion-view view-title="{{navTitle}}" class="cream">
+    <ion-content scroll="false">
         <div class="item cream">
             <h2 class="text-center orange">STEP TWO</h2>
             <h4 class="text-center">Measure pulley A's outside diameter</h4>
         </div>
-        <div class="list">
-            <div class="item padding item-image">
+        <div class="list" style="height: 100% !important;">
+            <div class="item padding item-image" style="height: 100% !important;">
                 <img src="img/2p-03.png">
-            </div>
-            <div class="item item-divider cream text-center">
-                <small>A's Outside Diameter</small>
-            </div>
-            <div class="item item-input-inset">
-                <label class="item item-input-wrapper">
-                    <input type="number" placeholder="A's Outside Diameter" ng-model="largeDiameter" ng-change="largeDiameterChange(largeDiameter)">
-                    <span class="item-note" ng-show="measuringUnits=='standard'">
-                      Inches
-                    </span>
-                    <span class="item-note" ng-show="measuringUnits=='metric'">
-                      Metric
-                    </span>
-                </label>
             </div>
         </div>
     </ion-content>
+    <div class="tabs has-footer" style="height:auto; bottom:44px;padding-top:0px;">
+        <div class="row" style="padding:0px;">
+            <div class="col" style="padding:0px;">
+                <div class="list">
+                    <div class="item item-divider cream text-center">
+                        <small>A's Outside Diameter</small>
+                    </div>
+                    <div class="item item-input-inset">
+                        <label class="item item-input-wrapper">
+                            <input type="number" placeholder="A's Outside Diameter" ng-model="largeDiameter" ng-change="largeDiameterChange(largeDiameter)">
+                            <span class="item-note" ng-show="measuringUnits=='standard'">
+                      Inches
+                    </span>
+                            <span class="item-note" ng-show="measuringUnits=='metric'">
+                      Metric
+                    </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <ion-footer-bar align-title="left" class="bar-royal hide-on-keyboard-open">
         <div class="buttons">
             <button class="button button-energized footer-btn" ng-click="prevPage()">Previous</button>

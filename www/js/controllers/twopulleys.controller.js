@@ -4,9 +4,9 @@
     angular.module('starter')
         .controller('DashCtrl', DashCtrl);
 
-    DashCtrl.$inject = ['_', '$scope', '$state', '$ionicHistory', '$ionicViewSwitcher', 'TwoPullyCalculator', 'localStorageService'];
+    DashCtrl.$inject = ['_', '$scope', '$state', '$ionicHistory', '$ionicViewSwitcher', 'TwoPullyCalculator', 'localStorageService', '$window'];
 
-    function DashCtrl(_, $scope, $state, $ionicHistory, $ionicViewSwitcher, TwoPullyCalculator, localStorageService) {
+    function DashCtrl(_, $scope, $state, $ionicHistory, $ionicViewSwitcher, TwoPullyCalculator, localStorageService, $window) {
         var currentStateName = $ionicHistory.currentStateName();
         var currentPage;
 
@@ -17,6 +17,12 @@
             });
 
             $scope.measuringUnits = localStorageService.get('isMeasure');
+
+            $scope.dev_height = document.getElementsByTagName('ion-content')[0].clientHeight;
+            $scope.dev_width = document.getElementsByTagName('ion-content')[0].clientWidth;
+
+            console.log('dev_height: ', $scope.dev_height);
+            console.log('dev_width: ', $scope.dev_width);
 
             if (currentStateName == 'app.twopulleys-02') {
                 $scope.pulleyCenter = 0;

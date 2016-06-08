@@ -1,3 +1,7 @@
+.scroll {
+    height: 100% !important
+}
+
 .blue {
     background-color: #0d2643;
     color: #f3f3f3;
@@ -45,7 +49,6 @@
     color: #b24826 !important;
 }
 
-
 .footer-btn {
     font-size: 16px !important;
     line-height: 1.3333333 !important;
@@ -84,11 +87,9 @@
 // .keyboard-open .tabs {
 //     display: none;
 // }
-
 // .keyboard-open .has-tabs {
 //     bottom: 0;
 // }
-
 .popover {
     height: 115px;
 }
@@ -99,12 +100,14 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
-.bar-footer.footer-buttons{
-     padding: 0px;
+.bar-footer.footer-buttons {
+    padding: 0px;
 }
-.bar-footer.footer-buttons .row{
-     padding: 0px;
+
+.bar-footer.footer-buttons .row {
+    padding: 0px;
 }
-.bar-footer.footer-buttons .row .col{
-     text-align: center;
+
+.bar-footer.footer-buttons .row .col {
+    text-align: center;
 }
