@@ -101,7 +101,6 @@
             // }
 
             $scope.$on("$ionicView.enter", function(scopes, states) {
-                console.log('$ionicView.enter');
                 localStorageService.set('pulleyCenter', 0);
 
                 localStorageService.set('pulleyCenter1', 0);

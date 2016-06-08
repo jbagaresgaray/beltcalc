@@ -12,16 +12,19 @@
 
 
         $scope.$on("$ionicView.enter", function(scopes, states) {
-            $scope.pulleyCenter = 0;
-            $scope.smallDiameter = 0;
-            $scope.largeDiameter = 0;
-            $scope.beltLength = 0;
-
             currentPage = _.findIndex(TwoPullyCalculator.pagesArr(), function(o) {
                 return o == currentStateName;
             });
 
             $scope.measuringUnits = localStorageService.get('isMeasure');
+
+            if (currentStateName == 'app.twopulleys-02') {
+                $scope.pulleyCenter = 0;
+                $scope.smallDiameter = 0;
+                $scope.largeDiameter = 0;
+                $scope.beltLength = 0;
+            }
+
         });
 
         if (currentStateName == 'app.twopulleys-02') {
@@ -34,15 +37,11 @@
             $scope.smallDiameter = TwoPullyCalculator.getSmallPulleyDiameter();
             $scope.nextTitle = 'Next';
         } else if (currentStateName == 'app.twopulleys-05') {
-            $scope.pulleyCenter = TwoPullyCalculator.getPulleyCenterDistance();
-            $scope.largeDiameter = TwoPullyCalculator.getLargePulleyDiameter();
-            $scope.smallDiameter = TwoPullyCalculator.getSmallPulleyDiameter();
+            $scope.pulleyCenter = TwoPullyCalculator.calculatePulleyCenter(TwoPullyCalculator.getPulleyCenterDistance());
+            $scope.largeDiameter = TwoPullyCalculator.calculatePulleyDiameter(TwoPullyCalculator.getLargePulleyDiameter());
+            $scope.smallDiameter = TwoPullyCalculator.calculatePulleyDiameter(TwoPullyCalculator.getSmallPulleyDiameter());
 
-            var pulleyCenter = TwoPullyCalculator.calculatePulleyCenter(TwoPullyCalculator.getPulleyCenterDistance());
-            var largeDiameter = TwoPullyCalculator.calculatePulleyDiameter(TwoPullyCalculator.getLargePulleyDiameter());
-            var smallDiameter = TwoPullyCalculator.calculatePulleyDiameter(TwoPullyCalculator.getSmallPulleyDiameter());
-
-            $scope.beltLength = TwoPullyCalculator.calculateBeltLength(pulleyCenter, largeDiameter, smallDiameter);
+            $scope.beltLength = TwoPullyCalculator.calculateBeltLength($scope.pulleyCenter, $scope.largeDiameter, $scope.smallDiameter);
 
             $scope.nextTitle = 'Re-Calculate';
         }
