@@ -98,3 +98,13 @@
     background-color: #fafafa;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
+
+.bar-footer.footer-buttons{
+     padding: 0px;
+}
+.bar-footer.footer-buttons .row{
+     padding: 0px;
+}
+.bar-footer.footer-buttons .row .col{
+     text-align: center;
+}

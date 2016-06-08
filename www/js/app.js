@@ -55,10 +55,41 @@
                             controller: 'SettingsCtrl'
                         }
                     }
+                })
+                .state('app.info', {
+                    url: '/appinfo',
+                    views: {
+                        'menuContent': {
+                            templateUrl: 'templates/appinfo.html'
+                        }
+                    }
+                })
+                .state('info', {
+                    url: '/info',
+                    templateUrl: 'templates/info.html',
+                    controller: 'StartCtrl'
                 });
 
-            $urlRouterProvider.otherwise('/app/tab');
+            $urlRouterProvider.otherwise('/info');
 
+        }])
+        .controller('StartCtrl', ['$scope', '$state', 'localStorageService', function($scope, $state, localStorageService) {
+
+            $scope.$on('$ionicView.loaded', function() {
+                $scope.showFooter = true;
+
+                var settings = localStorageService.get('isAgree');
+                if (settings === 1) {
+                    console.log('settings: ', settings);
+                    $state.go('app.tab');
+                }
+            });
+
+
+            $scope.agreeBtn = function() {
+                localStorageService.set('isAgree', 1);
+                $state.go('app.tab');
+            };
         }])
         .controller('MenuCtrl', ['$scope', '$state', 'localStorageService', function($scope, $state, localStorageService) {
 
