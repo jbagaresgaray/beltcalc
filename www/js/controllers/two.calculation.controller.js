@@ -8,11 +8,11 @@
 
     function DashCalcCtrl(_, $scope, $state, $ionicHistory, $ionicViewSwitcher, TwoPullyCalculator, localStorageService) {
 
-        $scope.$on("$ionicView.enter", function(scopes, states) {
-            $scope.pulleyCenter = 0;
-            $scope.smallDiameter = 0;
-            $scope.largeDiameter = 0;
-            $scope.beltLength = 0;
+        $scope.$on("$ionicView.beforeEnter", function(scopes, states) {
+            $scope.pulleyCenter = '';
+            $scope.smallDiameter = '';
+            $scope.largeDiameter = '';
+            $scope.beltLength = '';
 
             $scope.measuringUnits = localStorageService.get('isMeasure');
             $scope.showCalculate = ($state.params.recal == 'true') ? true : false;

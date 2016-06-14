@@ -11,23 +11,31 @@
         var currentStateName = $ionicHistory.currentStateName();
         var currentPage;
 
-        $scope.$on("$ionicView.enter", function(scopes, states) {
+        $scope.$on("$ionicView.beforeEnter", function(scopes, states) {
             currentPage = _.findIndex(ThreePullyCalculator.pagesArr(), function(o) {
                 return o == currentStateName;
             });
 
             $scope.measuringUnits = localStorageService.get('isMeasure');
 
+            $scope.pulleyCenter1 = '';
+            $scope.pulleyCenter2 = '';
+            $scope.pulleyCenter3 = '';
+
+            $scope.largeDiameter = '';
+            $scope.mediumDiameter = '';
+            $scope.smallDiameter = '';
+
+            $scope.beltLength = '';
+
             if (currentStateName == 'app.threepulleys-02') {
-                $scope.pulleyCenter1 = 0;
-                $scope.pulleyCenter2 = 0;
-                $scope.pulleyCenter3 = 0;
+                ThreePullyCalculator.setPulleyCenterDistance1($scope.pulleyCenter1 || 0);
+                ThreePullyCalculator.setPulleyCenterDistance2($scope.pulleyCenter2 || 0);
+                ThreePullyCalculator.setPulleyCenterDistance3($scope.pulleyCenter3 || 0);
 
-                $scope.largeDiameter = 0;
-                $scope.mediumDiameter = 0;
-                $scope.smallDiameter = 0;
-
-                $scope.beltLength = 0;
+                ThreePullyCalculator.setLargePulleyDiameter($scope.largeDiameter || 0);
+                ThreePullyCalculator.setMediumPulleyDiameter($scope.mediumDiameter || 0);
+                ThreePullyCalculator.setSmallPulleyDiameter($scope.smallDiameter || 0);
             }
         });
 
@@ -57,17 +65,25 @@
             $scope.nextTitle = 'Next';
 
         } else if (currentStateName == 'app.threepulleys-08') {
-            $scope.pulleyCenter1 = ThreePullyCalculator.calculatePulleyCenter(ThreePullyCalculator.getPulleyCenterDistance1());
-            $scope.pulleyCenter2 = ThreePullyCalculator.calculatePulleyCenter(ThreePullyCalculator.getPulleyCenterDistance2());
-            $scope.pulleyCenter3 = ThreePullyCalculator.calculatePulleyCenter(ThreePullyCalculator.getPulleyCenterDistance3());
+            $scope.pulleyCenter1 = ThreePullyCalculator.getPulleyCenterDistance1();
+            $scope.pulleyCenter2 = ThreePullyCalculator.getPulleyCenterDistance2();
+            $scope.pulleyCenter3 = ThreePullyCalculator.getPulleyCenterDistance3();
 
-            $scope.largeDiameter = ThreePullyCalculator.calculatePulleyDiameter(ThreePullyCalculator.getLargePulleyDiameter());
-            $scope.mediumDiameter = ThreePullyCalculator.calculatePulleyDiameter(ThreePullyCalculator.getMediumPulleyDiameter());
-            $scope.smallDiameter = ThreePullyCalculator.calculatePulleyDiameter(ThreePullyCalculator.getSmallPulleyDiameter());
+            $scope.largeDiameter = ThreePullyCalculator.getLargePulleyDiameter();
+            $scope.mediumDiameter = ThreePullyCalculator.getMediumPulleyDiameter();
+            $scope.smallDiameter = ThreePullyCalculator.getSmallPulleyDiameter();
+
+            var pulleyCenter1 = ThreePullyCalculator.calculatePulleyCenter(ThreePullyCalculator.getPulleyCenterDistance1());
+            var pulleyCenter2 = ThreePullyCalculator.calculatePulleyCenter(ThreePullyCalculator.getPulleyCenterDistance2());
+            var pulleyCenter3 = ThreePullyCalculator.calculatePulleyCenter(ThreePullyCalculator.getPulleyCenterDistance3());
+
+            var largeDiameter = ThreePullyCalculator.calculatePulleyDiameter(ThreePullyCalculator.getLargePulleyDiameter());
+            var mediumDiameter = ThreePullyCalculator.calculatePulleyDiameter(ThreePullyCalculator.getMediumPulleyDiameter());
+            var smallDiameter = ThreePullyCalculator.calculatePulleyDiameter(ThreePullyCalculator.getSmallPulleyDiameter());
 
 
-            $scope.beltLength = ThreePullyCalculator.calculateBeltLength($scope.pulleyCenter1, $scope.pulleyCenter2, $scope.pulleyCenter3,
-                $scope.largeDiameter, $scope.mediumDiameter, $scope.smallDiameter);
+            $scope.beltLength = ThreePullyCalculator.calculateBeltLength(pulleyCenter1, pulleyCenter2, pulleyCenter3,
+                largeDiameter, mediumDiameter, smallDiameter);
 
             $scope.nextTitle = 'Re-Calculate';
         }

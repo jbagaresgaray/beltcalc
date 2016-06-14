@@ -49,6 +49,7 @@
                 })
                 .state('app.tab', {
                     url: '/tab',
+                    cache:false,
                     views: {
                         'menuContent': {
                             templateUrl: 'templates/tabs.html',
@@ -58,6 +59,7 @@
                 })
                 .state('app.settings', {
                     url: '/settings',
+                    cache:false,
                     views: {
                         'menuContent': {
                             templateUrl: 'templates/settings.html',
@@ -67,6 +69,7 @@
                 })
                 .state('app.info', {
                     url: '/appinfo',
+                    cache:false,
                     views: {
                         'menuContent': {
                             templateUrl: 'templates/appinfo.html'
@@ -75,6 +78,7 @@
                 })
                 .state('info', {
                     url: '/info',
+                    cache:false,
                     templateUrl: 'templates/info.html',
                     controller: 'StartCtrl'
                 });

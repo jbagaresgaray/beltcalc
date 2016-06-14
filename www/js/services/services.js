@@ -66,11 +66,14 @@
                     var sumTotal = (center + large + small);
 
                     console.log('allTotal: ', sumTotal);
-                    console.log(':======================:');
-                    
+                   
                     if (measuringUnits == 'standard') {
+                        console.log('BeltLength: ', Math.max(0, parseFloat((sumTotal - 2))).toFixed(3));
+                        console.log(':======================:');
                         return Math.max(0, parseFloat((sumTotal - 2))).toFixed(3);
                     } else {
+                        console.log('BeltLength: ', Math.max(0, parseFloat((sumTotal - 50.8) / 10)).toFixed(3));
+                        console.log(':======================:');
                         return Math.max(0, parseFloat((sumTotal - 50.8) / 10)).toFixed(3);
                     }
                 }

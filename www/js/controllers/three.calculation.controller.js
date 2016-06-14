@@ -9,16 +9,16 @@
 
     function ChatsCalcCtrl(_, $scope, $state, $ionicHistory, $ionicViewSwitcher, ThreePullyCalculator, localStorageService) {
 
-        $scope.$on("$ionicView.enter", function(scopes, states) {
-            $scope.pulleyCenter1 = 0;
-            $scope.pulleyCenter2 = 0;
-            $scope.pulleyCenter3 = 0;
+        $scope.$on("$ionicView.beforeEnter", function(scopes, states) {
+            $scope.pulleyCenter1 = '';
+            $scope.pulleyCenter2 = '';
+            $scope.pulleyCenter3 = '';
 
-            $scope.largeDiameter = 0;
-            $scope.mediumDiameter = 0;
-            $scope.smallDiameter = 0;
+            $scope.largeDiameter = '';
+            $scope.mediumDiameter = '';
+            $scope.smallDiameter = '';
 
-            $scope.beltLength = 0;
+            $scope.beltLength = '';
 
             $scope.showCalculate = ($state.params.recal == 'true') ? true : false;
 
