@@ -49,7 +49,7 @@
                 })
                 .state('app.tab', {
                     url: '/tab',
-                    cache:false,
+                    cache: false,
                     views: {
                         'menuContent': {
                             templateUrl: 'templates/tabs.html',
@@ -59,7 +59,7 @@
                 })
                 .state('app.settings', {
                     url: '/settings',
-                    cache:false,
+                    cache: false,
                     views: {
                         'menuContent': {
                             templateUrl: 'templates/settings.html',
@@ -69,7 +69,7 @@
                 })
                 .state('app.info', {
                     url: '/appinfo',
-                    cache:false,
+                    cache: false,
                     views: {
                         'menuContent': {
                             templateUrl: 'templates/appinfo.html'
@@ -78,12 +78,12 @@
                 })
                 .state('info', {
                     url: '/info',
-                    cache:false,
+                    cache: false,
                     templateUrl: 'templates/info.html',
                     controller: 'StartCtrl'
                 });
 
-            $urlRouterProvider.otherwise('/info');
+            $urlRouterProvider.otherwise('/app/tab');
 
         }])
         .controller('StartCtrl', ['$scope', '$state', 'localStorageService', function($scope, $state, localStorageService) {
@@ -104,33 +104,56 @@
                 $state.go('app.tab');
             };
         }])
-        .controller('MenuCtrl', ['$scope', '$state', 'localStorageService', '$ionicPlatform', function($scope, $state, localStorageService, $ionicPlatform) {
+        .controller('MenuCtrl', ['$scope', '$state', 'localStorageService', '$ionicPlatform', '$timeout', '$ionicViewSwitcher',
+            function($scope, $state, localStorageService, $ionicPlatform, $timeout, $ionicViewSwitcher) {
 
-            $ionicPlatform.onHardwareBackButton(function() {
-                event.preventDefault();
-                event.stopPropagation();
-                alert('going back now yall');
-            });
+                $ionicPlatform.onHardwareBackButton(function() {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    alert('going back now yall');
+                });
 
-            $scope.gotoTwoPulleys = function() {
-                var settings = localStorageService.get('isResult');
-                if (settings == 'result') {
-                    $state.go('app.twopulleys-calculation', { recal: false });
-                } else {
-                    $state.go('app.twopulleys-02');
-                }
-            };
+                $scope.$on('$ionicView.beforeEnter', function() {
+                    var settings = localStorageService.get('isAgree');
+                    if (settings === 1) {
+                        $scope.showFooter = false;
+                    } else {
+                        $scope.showFooter = true;
+                    }
 
-            $scope.gotoThreePulleys = function() {
-                var settings = localStorageService.get('isResult');
-                if (settings == 'result') {
-                    $state.go('app.threepulleys-calculation', { recal: false });
-                } else {
-                    $state.go('app.threepulleys-02');
-                }
-            };
+                    console.log('settings: ', $scope.showFooter);
+                });
 
-        }])
+                $scope.agreeBtn = function() {
+                    localStorageService.set('isAgree', 1);
+                    $ionicViewSwitcher.nextDirection('forward');
+
+                    $timeout(function() {                        
+                        $state.go($state.current, null, { reload: true });
+                        // $state.reload();
+                    }, 600);
+                };
+
+                $scope.gotoTwoPulleys = function() {
+                    var settings = localStorageService.get('isResult');
+                    if (settings == 'result') {
+                        $state.go('app.twopulleys-calculation', { recal: false });
+                    } else {
+                        $state.go('app.twopulleys-02');
+                    }
+                };
+
+                $scope.gotoThreePulleys = function() {
+                    var settings = localStorageService.get('isResult');
+                    if (settings == 'result') {
+                        $state.go('app.threepulleys-calculation', { recal: false });
+                    } else {
+                        $state.go('app.threepulleys-02');
+                    }
+                };
+
+            }
+        ])
         .controller('AppCtrl', ['$scope', '$state', 'localStorageService', '$ionicPopup', function($scope, $state, localStorageService, $ionicPopup) {
 
             // var resultPage = localStorageService.get('isResult'),
