@@ -18,10 +18,12 @@
 
             $scope.measuringUnits = localStorageService.get('isMeasure');
 
-            $scope.pulleyCenter = '';
-            $scope.smallDiameter = '';
-            $scope.largeDiameter = '';
-            $scope.beltLength = '';
+            if (currentStateName !== 'app.twopulleys-05') {
+                $scope.pulleyCenter = '';
+                $scope.smallDiameter = '';
+                $scope.largeDiameter = '';
+                $scope.beltLength = '';
+            }
 
             if (currentStateName == 'app.twopulleys-02') {
                 TwoPullyCalculator.setPulleyCenterDistance($scope.pulleyCenter || 0);
@@ -88,18 +90,15 @@
 
                 $state.go(TwoPullyCalculator.pagesArr()[currentPage + 1]);
             } else {
-                /*$ionicHistory.nextViewOptions({
-                    disableBack: true
-                });
-                $ionicViewSwitcher.nextDirection('back');
+                // $scope.calculateResult();
 
-                TwoPullyCalculator.setPulleyCenterDistance(0);
-                TwoPullyCalculator.setLargePulleyDiameter(0);
-                TwoPullyCalculator.setSmallPulleyDiameter(0);
+                var pulleyCenter = TwoPullyCalculator.calculatePulleyCenter($scope.pulleyCenter);
+                var largeDiameter = TwoPullyCalculator.calculatePulleyDiameter($scope.largeDiameter);
+                var smallDiameter = TwoPullyCalculator.calculatePulleyDiameter($scope.smallDiameter);
 
-                $state.go('twopulleys-02');*/
+                $scope.beltLength = TwoPullyCalculator.calculateBeltLength(pulleyCenter, largeDiameter, smallDiameter);
 
-                $scope.calculateResult();
+                console.log('beltLength: ', $scope.beltLength);
             }
         };
 

@@ -128,7 +128,7 @@
                     localStorageService.set('isAgree', 1);
                     $ionicViewSwitcher.nextDirection('forward');
 
-                    $timeout(function() {                        
+                    $timeout(function() {
                         $state.go($state.current, null, { reload: true });
                         // $state.reload();
                     }, 600);
