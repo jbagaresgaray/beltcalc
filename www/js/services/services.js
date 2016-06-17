@@ -19,19 +19,19 @@
                     localStorageService.set('pulleyCenter', value);
                 },
                 getPulleyCenterDistance: function() {
-                    return localStorageService.get('pulleyCenter') || 0;
+                    return localStorageService.get('pulleyCenter');
                 },
                 setSmallPulleyDiameter: function(value) {
                     localStorageService.set('smallDiameter', value);
                 },
                 getSmallPulleyDiameter: function() {
-                    return localStorageService.get('smallDiameter') || 0;
+                    return localStorageService.get('smallDiameter');
                 },
                 setLargePulleyDiameter: function(value) {
                     localStorageService.set('largeDiameter', value);
                 },
                 getLargePulleyDiameter: function() {
-                    return localStorageService.get('largeDiameter') || 0;
+                    return localStorageService.get('largeDiameter');
                 },
                 calculatePulleyCenter: function(center) {
                     var measuringUnits = localStorageService.get('isMeasure');
@@ -59,9 +59,9 @@
                     console.log('large: ', large);
                     console.log('small: ', small);
 
-                    center = parseFloat(center);
-                    large = parseFloat(large);
-                    small = parseFloat(small);
+                    center = parseFloat(center) || 0;
+                    large = parseFloat(large) || 0;
+                    small = parseFloat(small) || 0;
 
                     var sumTotal = (center + large + small);
 
@@ -102,31 +102,31 @@
                     localStorageService.set('pulleyCenter3', value);
                 },
                 getPulleyCenterDistance1: function() {
-                    return localStorageService.get('pulleyCenter1') || 0;
+                    return localStorageService.get('pulleyCenter1');
                 },
                 getPulleyCenterDistance2: function() {
-                    return localStorageService.get('pulleyCenter2') || 0;
+                    return localStorageService.get('pulleyCenter2');
                 },
                 getPulleyCenterDistance3: function() {
-                    return localStorageService.get('pulleyCenter3') || 0;
+                    return localStorageService.get('pulleyCenter3');
                 },
                 setSmallPulleyDiameter: function(value) {
                     localStorageService.set('smallDiameter', value);
                 },
                 getSmallPulleyDiameter: function() {
-                    return localStorageService.get('smallDiameter') || 0;
+                    return localStorageService.get('smallDiameter');
                 },
                 setMediumPulleyDiameter: function(value) {
                     localStorageService.set('mediumDiameter', value);
                 },
                 getMediumPulleyDiameter: function() {
-                    return localStorageService.get('mediumDiameter') || 0;
+                    return localStorageService.get('mediumDiameter');
                 },
                 setLargePulleyDiameter: function(value) {
                     localStorageService.set('largeDiameter', value);
                 },
                 getLargePulleyDiameter: function() {
-                    return localStorageService.get('largeDiameter') || 0;
+                    return localStorageService.get('largeDiameter');
                 },
                 calculatePulleyCenter: function(center) {
                     var measuringUnits = localStorageService.get('isMeasure');
@@ -155,13 +155,13 @@
                     console.log('medium: ', medium);
                     console.log('small: ', small);
 
-                    center1 = parseFloat(center1);
-                    center2 = parseFloat(center2);
-                    center3 = parseFloat(center3);
+                    center1 = parseFloat(center1) || 0;
+                    center2 = parseFloat(center2) || 0;
+                    center3 = parseFloat(center3) || 0;
 
-                    large = parseFloat(large);
-                    medium = parseFloat(medium);
-                    small = parseFloat(small);
+                    large = parseFloat(large) || 0;
+                    medium = parseFloat(medium) || 0;
+                    small = parseFloat(small) || 0;
 
                     var sumCenterTotal = (center1 + center2 + center3) + (large + medium + small);
 

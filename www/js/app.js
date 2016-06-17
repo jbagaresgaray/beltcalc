@@ -121,8 +121,6 @@
                     } else {
                         $scope.showFooter = true;
                     }
-
-                    console.log('settings: ', $scope.showFooter);
                 });
 
                 $scope.agreeBtn = function() {
