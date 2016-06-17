@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('starter', ['ionic', 'LocalStorageModule'])
-        .run(['$ionicPlatform', '$rootScope', '$state', '$ionicPopup', 'TwoPullyCalculator', 'ThreePullyCalculator',
-            function($ionicPlatform, $rootScope, $state, $ionicPopup, TwoPullyCalculator, ThreePullyCalculator) {
+        .run(['$ionicPlatform', '$rootScope', '$state', '$ionicPopup', 'TwoPullyCalculator', 'ThreePullyCalculator', 'localStorageService',
+            function($ionicPlatform, $rootScope, $state, $ionicPopup, TwoPullyCalculator, ThreePullyCalculator, localStorageService) {
                 $ionicPlatform.ready(function() {
                     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
                         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -34,6 +34,7 @@
                     }
                 }, 100);
 
+                localStorageService.set('isResult', 'step');
             }
         ])
         .config(['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
