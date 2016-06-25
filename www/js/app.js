@@ -35,6 +35,7 @@
                 }, 100);
 
                 localStorageService.set('isResult', 'step');
+                localStorageService.set('isMeasure','metric');
             }
         ])
         .config(['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
