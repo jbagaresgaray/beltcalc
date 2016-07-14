@@ -68,13 +68,17 @@
                     console.log('allTotal: ', sumTotal);
 
                     if (measuringUnits == 'standard') {
-                        console.log('BeltLength: ', Math.max(0, parseFloat((sumTotal - 2))).toFixed(3));
+                        var total = Math.max(0, parseFloat((sumTotal - 0.125))).toFixed(3);
+
+                        console.log('BeltLength: ', total);
                         console.log(':======================:');
-                        return Math.max(0, parseFloat((sumTotal - 2))).toFixed(3);
+                        return total;
                     } else {
-                        console.log('BeltLength: ', Math.max(0, parseFloat((sumTotal - 50.8) / 10)).toFixed(3));
+                        var total = Math.max(0, parseFloat((sumTotal - 3.175) / 10)).toFixed(3);
+
+                        console.log('BeltLength: ', total);
                         console.log(':======================:');
-                        return Math.max(0, parseFloat((sumTotal - 50.8) / 10)).toFixed(3);
+                        return total;
                     }
                 }
             };
@@ -169,9 +173,15 @@
                     console.log(':======================:');
 
                     if (measuringUnits == 'standard') {
-                        return Math.max(0, parseFloat((sumCenterTotal - 2))).toFixed(3);
+                        var total = Math.max(0, parseFloat((sumCenterTotal - 0.125))).toFixed(3);
+                        console.log('BeltLength: ', total);
+                        console.log(':======================:');
+                        return total;
                     } else {
-                        return Math.max(0, parseFloat((sumCenterTotal - 50.8) / 10)).toFixed(3);
+                        var total = Math.max(0, parseFloat((sumCenterTotal - 3.175) / 10)).toFixed(3);
+                        console.log('BeltLength: ', total);
+                        console.log(':======================:');
+                        return total;
                     }
                 }
             };
