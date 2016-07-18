@@ -30,7 +30,7 @@
 
                 $scope.toggleOption = function(value) {
                     $scope.toggleModel = value;
-                    
+
                     var isResult = (value == true) ? 'step' : 'result';
                     localStorageService.set('isResult', isResult);
                 };

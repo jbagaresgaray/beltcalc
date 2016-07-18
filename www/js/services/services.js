@@ -34,22 +34,24 @@
                     return localStorageService.get('largeDiameter');
                 },
                 calculatePulleyCenter: function(center) {
-                    var measuringUnits = localStorageService.get('isMeasure');
-                    console.log('measuringUnits: ',measuringUnits);
-
-                    if (measuringUnits == 'standard') {
-                        return parseFloat((center * 2)).toFixed(4);
-                    } else {
-                        return parseFloat(((center * 2) * 25.4)).toFixed(4);
-                    }
+                    // var measuringUnits = localStorageService.get('isMeasure');
+                    // console.log('measuringUnits: ',measuringUnits);
+                    //
+                    // if (measuringUnits == 'standard') {
+                    //     return parseFloat((center * 2)).toFixed(4);
+                    // } else {
+                    //     return parseFloat(((center * 2) * 25.4)).toFixed(4);
+                    // }
+                    return parseFloat((center * 2)).toFixed(4);
                 },
                 calculatePulleyDiameter: function(diameter) {
-                    var measuringUnits = localStorageService.get('isMeasure');
-                    if (measuringUnits == 'standard') {
-                        return parseFloat(((3.146 * diameter) / 2)).toFixed(4);
-                    } else {
-                        return parseFloat(((diameter * 25.4) * 3.146) / 2).toFixed(4);
-                    }
+                    // var measuringUnits = localStorageService.get('isMeasure');
+                    // if (measuringUnits == 'standard') {
+                    //     return parseFloat(((3.146 * diameter) / 2)).toFixed(4);
+                    // } else {
+                    //     return parseFloat(((diameter * 25.4) * 3.146) / 2).toFixed(4);
+                    // }
+                    return parseFloat(((3.146 * diameter) / 2)).toFixed(4);
                 },
                 calculateBeltLength: function(center, large, small) {
                     var measuringUnits = localStorageService.get('isMeasure');
@@ -70,13 +72,13 @@
                     if (measuringUnits == 'standard') {
                         var total = Math.max(0, parseFloat((sumTotal - 0.125))).toFixed(3);
 
-                        console.log('BeltLength: ', total);
+                        console.log('BeltLength 1: ', total);
                         console.log(':======================:');
                         return total;
                     } else {
-                        var total = Math.max(0, parseFloat((sumTotal - 3.175) / 10)).toFixed(3);
+                        var total = Math.max(0, parseFloat((sumTotal - 0.3175) / 10)).toFixed(3);
 
-                        console.log('BeltLength: ', total);
+                        console.log('BeltLength 2: ', total);
                         console.log(':======================:');
                         return total;
                     }
@@ -134,19 +136,21 @@
                 },
                 calculatePulleyCenter: function(center) {
                     var measuringUnits = localStorageService.get('isMeasure');
-                    if (measuringUnits == 'standard') {
-                        return parseFloat((center * 2)).toFixed(4);
-                    } else {
-                        return parseFloat(((center * 2) * 25.4)).toFixed(4);
-                    }
+                    // if (measuringUnits == 'standard') {
+                    //     return parseFloat((center * 2)).toFixed(4);
+                    // } else {
+                    //     return parseFloat(((center * 2) * 25.4)).toFixed(4);
+                    // }
+                    return parseFloat((center * 2)).toFixed(4);
                 },
                 calculatePulleyDiameter: function(diameter) {
                     var measuringUnits = localStorageService.get('isMeasure');
-                    if (measuringUnits == 'standard') {
-                        return parseFloat(((3.146 * diameter) / 2)).toFixed(4);
-                    } else {
-                        return parseFloat(((diameter * 25.4) * 3.146) / 2).toFixed(4);
-                    }
+                    // if (measuringUnits == 'standard') {
+                    //     return parseFloat(((3.146 * diameter) / 2)).toFixed(4);
+                    // } else {
+                    //     return parseFloat(((diameter * 25.4) * 3.146) / 2).toFixed(4);
+                    // }
+                    return parseFloat(((3.146 * diameter) / 2)).toFixed(4);
                 },
                 calculateBeltLength: function(center1, center2, center3, large, medium, small) {
                     var measuringUnits = localStorageService.get('isMeasure');
@@ -178,7 +182,7 @@
                         console.log(':======================:');
                         return total;
                     } else {
-                        var total = Math.max(0, parseFloat((sumCenterTotal - 3.175) / 10)).toFixed(3);
+                        var total = Math.max(0, parseFloat((sumCenterTotal - 0.3175) / 10)).toFixed(3);
                         console.log('BeltLength: ', total);
                         console.log(':======================:');
                         return total;
