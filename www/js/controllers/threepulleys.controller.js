@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular.module('starter')
@@ -11,15 +11,15 @@
         var currentStateName = $ionicHistory.currentStateName();
         var currentPage;
 
-        $scope.$on("$ionicView.beforeEnter", function(scopes, states) {
+        $scope.$on("$ionicView.beforeEnter", function (scopes, states) {
             console.log('beforeEnter: ');
 
-            currentPage = _.findIndex(ThreePullyCalculator.pagesArr(), function(o) {
+            currentPage = _.findIndex(ThreePullyCalculator.pagesArr(), function (o) {
                 return o == currentStateName;
             });
 
             $scope.measuringUnits = localStorageService.get('isMeasure');
-            console.log('currentStateName: ',currentStateName);
+            console.log('currentStateName: ', currentStateName);
 
             if (currentStateName != 'app.threepulleys-08') {
                 $scope.pulleyCenter1 = '';
@@ -33,7 +33,8 @@
                 $scope.beltLength = '';
             }
 
-            if (currentStateName == 'app.threepulleys-02') {
+            //if (currentStateName == 'app.threepulleys-02') {
+            if (currentStateName == 'app.threepulleys-01') {
                 ThreePullyCalculator.setPulleyCenterDistance1($scope.pulleyCenter1 || '');
                 ThreePullyCalculator.setPulleyCenterDistance2($scope.pulleyCenter2 || '');
                 ThreePullyCalculator.setPulleyCenterDistance3($scope.pulleyCenter3 || '');
@@ -44,18 +45,20 @@
             }
         });
 
-        $scope.$on("$ionicView.afterEnter", function(scopes, states) {
+        $scope.$on("$ionicView.afterEnter", function (scopes, states) {
             console.log('afterEnter: ');
 
-            currentPage = _.findIndex(ThreePullyCalculator.pagesArr(), function(o) {
+            currentPage = _.findIndex(ThreePullyCalculator.pagesArr(), function (o) {
                 return o == currentStateName;
             });
-            console.log('currentStateName: ',currentStateName);
+            console.log('currentStateName: ', currentStateName);
 
-            if (currentStateName == 'app.threepulleys-02') {
+            if (currentStateName == 'app.threepulleys-01') {
+                $scope.nextTitle = 'Next';
+            } else if (currentStateName == 'app.threepulleys-02') {
                 $scope.pulleyCenter1 = ThreePullyCalculator.getPulleyCenterDistance1();
                 $scope.nextTitle = 'Next';
-                console.log('$scope.pulleyCenter1: ',$scope.pulleyCenter1);
+                console.log('$scope.pulleyCenter1: ', $scope.pulleyCenter1);
             } else if (currentStateName == 'app.threepulleys-03') {
                 $scope.pulleyCenter2 = ThreePullyCalculator.getPulleyCenterDistance2();
                 $scope.nextTitle = 'Next';
@@ -101,31 +104,31 @@
             }
         });
 
-        $scope.pulleyCenterChange1 = function(newValue) {
+        $scope.pulleyCenterChange1 = function (newValue) {
             $scope.pulleyCenter1 = newValue;
         };
 
-        $scope.pulleyCenterChange2 = function(newValue) {
+        $scope.pulleyCenterChange2 = function (newValue) {
             $scope.pulleyCenter2 = newValue;
         };
 
-        $scope.pulleyCenterChange3 = function(newValue) {
+        $scope.pulleyCenterChange3 = function (newValue) {
             $scope.pulleyCenter3 = newValue;
         };
 
-        $scope.smallDiameterChange = function(newValue) {
+        $scope.smallDiameterChange = function (newValue) {
             $scope.smallDiameter = newValue;
         };
 
-        $scope.mediumDiameterChange = function(newValue) {
+        $scope.mediumDiameterChange = function (newValue) {
             $scope.mediumDiameter = newValue;
         };
 
-        $scope.largeDiameterChange = function(newValue) {
+        $scope.largeDiameterChange = function (newValue) {
             $scope.largeDiameter = newValue;
         };
 
-        $scope.calculateResult = function() {
+        $scope.calculateResult = function () {
 
             var pulleyCenter1 = ThreePullyCalculator.calculatePulleyCenter(ThreePullyCalculator.getPulleyCenterDistance1());
             var pulleyCenter2 = ThreePullyCalculator.calculatePulleyCenter(ThreePullyCalculator.getPulleyCenterDistance2());
@@ -142,7 +145,7 @@
         };
 
 
-        $scope.nextPage = function() {
+        $scope.nextPage = function () {
             if ($ionicHistory.currentStateName() !== ThreePullyCalculator.pagesArr()[6]) {
 
                 if (currentStateName == 'app.threepulleys-02') {
@@ -183,7 +186,7 @@
             }
         };
 
-        $scope.prevPage = function() {
+        $scope.prevPage = function () {
             if ($ionicHistory.currentStateName() !== ThreePullyCalculator.pagesArr()[0]) {
                 $state.go(ThreePullyCalculator.pagesArr()[currentPage - 1]);
             } else if ($ionicHistory.currentStateName() == ThreePullyCalculator.pagesArr()[0]) {

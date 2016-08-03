@@ -1,0 +1,7 @@
+{
+    "jscodehints.detectedExclusions": [
+        "/Applications/XAMPP/xamppfiles/htdocs/beltcalc/www/js/app.js",
+        "/Applications/XAMPP/xamppfiles/htdocs/beltcalc/www/js/threepulleys.js",
+        "/Applications/XAMPP/xamppfiles/htdocs/beltcalc/www/js/controllers/two.calculation.controller.js"
+    ]
+}

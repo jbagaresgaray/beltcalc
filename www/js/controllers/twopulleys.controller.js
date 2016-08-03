@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular.module('starter')
@@ -11,8 +11,8 @@
         var currentPage;
 
 
-        $scope.$on("$ionicView.beforeEnter", function(scopes, states) {
-            currentPage = _.findIndex(TwoPullyCalculator.pagesArr(), function(o) {
+        $scope.$on("$ionicView.beforeEnter", function (scopes, states) {
+            currentPage = _.findIndex(TwoPullyCalculator.pagesArr(), function (o) {
                 return o == currentStateName;
             });
 
@@ -25,19 +25,22 @@
                 $scope.beltLength = '';
             }
 
-            if (currentStateName == 'app.twopulleys-02') {
+            //if (currentStateName == 'app.twopulleys-02') {
+            if (currentStateName == 'app.twopulleys-01') {
                 TwoPullyCalculator.setPulleyCenterDistance($scope.pulleyCenter || '');
                 TwoPullyCalculator.setLargePulleyDiameter($scope.largeDiameter || '');
                 TwoPullyCalculator.setSmallPulleyDiameter($scope.smallDiameter || '');
             }
         });
 
-        $scope.$on("$ionicView.afterEnter", function(scopes, states) {
-            currentPage = _.findIndex(TwoPullyCalculator.pagesArr(), function(o) {
+        $scope.$on("$ionicView.afterEnter", function (scopes, states) {
+            currentPage = _.findIndex(TwoPullyCalculator.pagesArr(), function (o) {
                 return o == currentStateName;
             });
 
-            if (currentStateName == 'app.twopulleys-02') {
+            if (currentStateName == 'app.twopulleys-01') {
+                $scope.nextTitle = 'Next';
+            } else if (currentStateName == 'app.twopulleys-02') {
                 $scope.pulleyCenter = TwoPullyCalculator.getPulleyCenterDistance();
                 $scope.nextTitle = 'Next';
             } else if (currentStateName == 'app.twopulleys-03') {
@@ -67,19 +70,19 @@
 
 
 
-        $scope.pulleyCenterChange = function(newValue) {
+        $scope.pulleyCenterChange = function (newValue) {
             $scope.pulleyCenter = newValue;
         };
 
-        $scope.smallDiameterChange = function(newValue) {
+        $scope.smallDiameterChange = function (newValue) {
             $scope.smallDiameter = newValue;
         };
 
-        $scope.largeDiameterChange = function(newValue) {
+        $scope.largeDiameterChange = function (newValue) {
             $scope.largeDiameter = newValue;
         };
 
-        $scope.calculateResult = function() {
+        $scope.calculateResult = function () {
             var pulleyCenter = TwoPullyCalculator.calculatePulleyCenter($scope.pulleyCenter);
             var largeDiameter = TwoPullyCalculator.calculatePulleyDiameter($scope.largeDiameter);
             var smallDiameter = TwoPullyCalculator.calculatePulleyDiameter($scope.smallDiameter);
@@ -89,15 +92,15 @@
             console.log('beltLength: ', $scope.beltLength);
         };
 
-        $scope.nextPage = function() {
+        $scope.nextPage = function () {
             if ($ionicHistory.currentStateName() !== TwoPullyCalculator.pagesArr()[3]) {
-                if (currentStateName == 'app.twopulleys-02') {
+                /*if (currentStateName == 'app.twopulleys-02') {
                     TwoPullyCalculator.setPulleyCenterDistance($scope.pulleyCenter);
                 } else if (currentStateName == 'app.twopulleys-03') {
                     TwoPullyCalculator.setLargePulleyDiameter($scope.largeDiameter);
                 } else if (currentStateName == 'app.twopulleys-04') {
                     TwoPullyCalculator.setSmallPulleyDiameter($scope.smallDiameter);
-                }
+                }*/
 
                 $state.go(TwoPullyCalculator.pagesArr()[currentPage + 1]);
             } else {
@@ -113,7 +116,7 @@
             }
         };
 
-        $scope.prevPage = function() {
+        $scope.prevPage = function () {
             if ($ionicHistory.currentStateName() !== TwoPullyCalculator.pagesArr()[0]) {
                 $state.go(TwoPullyCalculator.pagesArr()[currentPage - 1]);
             } else if ($ionicHistory.currentStateName() == TwoPullyCalculator.pagesArr()[0]) {

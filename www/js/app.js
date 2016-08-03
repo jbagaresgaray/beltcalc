@@ -1,10 +1,10 @@
-(function() {
+(function () {
     'use strict';
 
     angular.module('starter', ['ionic', 'LocalStorageModule'])
         .run(['$ionicPlatform', '$rootScope', '$state', '$ionicPopup', 'TwoPullyCalculator', 'ThreePullyCalculator', 'localStorageService',
-            function($ionicPlatform, $rootScope, $state, $ionicPopup, TwoPullyCalculator, ThreePullyCalculator, localStorageService) {
-                $ionicPlatform.ready(function() {
+            function ($ionicPlatform, $rootScope, $state, $ionicPopup, TwoPullyCalculator, ThreePullyCalculator, localStorageService) {
+                $ionicPlatform.ready(function () {
                     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
                         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
                         cordova.plugins.Keyboard.disableScroll(true);
@@ -18,7 +18,7 @@
 
                 $rootScope.navTitle = '<img class="title-image" src="img/vbeltcalc-logo.png" style="height:35px;">';
 
-                $rootScope.$on("$ionicView.enter", function(scopes, states) {
+                $rootScope.$on("$ionicView.enter", function (scopes, states) {
                     if (states.stateName == 'tab') {
                         TwoPullyCalculator.setPulleyCenterDistance(0);
                         TwoPullyCalculator.setLargePulleyDiameter(0);
@@ -26,7 +26,7 @@
                     }
                 });
 
-                $ionicPlatform.registerBackButtonAction(function(event) {
+                $ionicPlatform.registerBackButtonAction(function (event) {
                     if ($state.current.name == "app.tab") {
                         navigator.app.exitApp();
                     } else {
@@ -35,10 +35,10 @@
                 }, 100);
 
                 localStorageService.set('isResult', 'step');
-                localStorageService.set('isMeasure','standard');
+                localStorageService.set('isMeasure', 'standard');
             }
         ])
-        .config(['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+        .config(['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
             $ionicConfigProvider.backButton.text('').icon('ion-chevron-left');
 
@@ -88,9 +88,9 @@
             $urlRouterProvider.otherwise('/app/tab');
 
         }])
-        .controller('StartCtrl', ['$scope', '$state', 'localStorageService', function($scope, $state, localStorageService) {
+        .controller('StartCtrl', ['$scope', '$state', 'localStorageService', function ($scope, $state, localStorageService) {
 
-            $scope.$on('$ionicView.loaded', function() {
+            $scope.$on('$ionicView.loaded', function () {
                 $scope.showFooter = true;
 
                 var settings = localStorageService.get('isAgree');
@@ -101,21 +101,21 @@
             });
 
 
-            $scope.agreeBtn = function() {
+            $scope.agreeBtn = function () {
                 localStorageService.set('isAgree', 1);
                 $state.go('app.tab');
             };
         }])
         .controller('MenuCtrl', ['$scope', '$state', 'localStorageService', '$ionicPlatform', '$timeout', '$ionicViewSwitcher',
-            function($scope, $state, localStorageService, $ionicPlatform, $timeout, $ionicViewSwitcher) {
+            function ($scope, $state, localStorageService, $ionicPlatform, $timeout, $ionicViewSwitcher) {
 
-                $ionicPlatform.onHardwareBackButton(function() {
+                $ionicPlatform.onHardwareBackButton(function () {
                     event.preventDefault();
                     event.stopPropagation();
                     alert('going back now yall');
                 });
 
-                $scope.$on('$ionicView.beforeEnter', function() {
+                $scope.$on('$ionicView.beforeEnter', function () {
                     var settings = localStorageService.get('isAgree');
                     if (settings === 1) {
                         $scope.showFooter = false;
@@ -124,37 +124,45 @@
                     }
                 });
 
-                $scope.agreeBtn = function() {
+                $scope.agreeBtn = function () {
                     localStorageService.set('isAgree', 1);
                     $ionicViewSwitcher.nextDirection('forward');
 
-                    $timeout(function() {
-                        $state.go($state.current, null, { reload: true });
+                    $timeout(function () {
+                        $state.go($state.current, null, {
+                            reload: true
+                        });
                         // $state.reload();
                     }, 600);
                 };
 
-                $scope.gotoTwoPulleys = function() {
+                $scope.gotoTwoPulleys = function () {
                     var settings = localStorageService.get('isResult');
                     if (settings == 'result') {
-                        $state.go('app.twopulleys-calculation', { recal: false });
+                        $state.go('app.twopulleys-calculation', {
+                            recal: false
+                        });
                     } else {
-                        $state.go('app.twopulleys-02');
+                        //$state.go('app.twopulleys-02');
+                        $state.go('app.twopulleys-01');
                     }
                 };
 
-                $scope.gotoThreePulleys = function() {
+                $scope.gotoThreePulleys = function () {
                     var settings = localStorageService.get('isResult');
                     if (settings == 'result') {
-                        $state.go('app.threepulleys-calculation', { recal: false });
+                        $state.go('app.threepulleys-calculation', {
+                            recal: false
+                        });
                     } else {
-                        $state.go('app.threepulleys-02');
+                        //$state.go('app.threepulleys-02');
+                        $state.go('app.threepulleys-01');
                     }
                 };
 
             }
         ])
-        .controller('AppCtrl', ['$scope', '$state', 'localStorageService', '$ionicPopup', function($scope, $state, localStorageService, $ionicPopup) {
+        .controller('AppCtrl', ['$scope', '$state', 'localStorageService', '$ionicPopup', function ($scope, $state, localStorageService, $ionicPopup) {
 
             // var resultPage = localStorageService.get('isResult'),
             //     isResult = resultPage ? resultPage : null;
@@ -172,7 +180,7 @@
             //     });
             // }
 
-            $scope.$on("$ionicView.enter", function(scopes, states) {
+            $scope.$on("$ionicView.enter", function (scopes, states) {
                 localStorageService.set('pulleyCenter', 0);
 
                 localStorageService.set('pulleyCenter1', 0);
@@ -184,22 +192,28 @@
                 localStorageService.set('largeDiameter', 0);
             });
 
-            $scope.gotoTwoPulleys = function() {
+            $scope.gotoTwoPulleys = function () {
                 var settings = localStorageService.get('isResult');
                 if (settings == 'result') {
-                    $state.go('app.twopulleys-calculation', { recal: false });
+                    $state.go('app.twopulleys-calculation', {
+                        recal: false
+                    });
                 } else {
-                    $state.go('app.twopulleys-02');
+                    //$state.go('app.twopulleys-02');
+                    $state.go('app.twopulleys-01');
                 }
             };
 
 
-            $scope.gotoThreePulleys = function() {
+            $scope.gotoThreePulleys = function () {
                 var settings = localStorageService.get('isResult');
                 if (settings == 'result') {
-                    $state.go('app.threepulleys-calculation', { recal: false });
+                    $state.go('app.threepulleys-calculation', {
+                        recal: false
+                    });
                 } else {
-                    $state.go('app.threepulleys-02');
+                    //$state.go('app.threepulleys-02');
+                    $state.go('app.threepulleys-01');
                 }
             };
         }]);
