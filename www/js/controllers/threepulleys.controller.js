@@ -146,7 +146,7 @@
 
 
         $scope.nextPage = function () {
-            if ($ionicHistory.currentStateName() !== ThreePullyCalculator.pagesArr()[6]) {
+            if ($ionicHistory.currentStateName() !== ThreePullyCalculator.pagesArr()[7]) {
 
                 if (currentStateName == 'app.threepulleys-02') {
                     ThreePullyCalculator.setPulleyCenterDistance1($scope.pulleyCenter1);

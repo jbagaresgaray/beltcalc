@@ -93,7 +93,7 @@
         };
 
         $scope.nextPage = function () {
-            if ($ionicHistory.currentStateName() !== TwoPullyCalculator.pagesArr()[3]) {
+            if ($ionicHistory.currentStateName() !== TwoPullyCalculator.pagesArr()[4]) {
                 /*if (currentStateName == 'app.twopulleys-02') {
                     TwoPullyCalculator.setPulleyCenterDistance($scope.pulleyCenter);
                 } else if (currentStateName == 'app.twopulleys-03') {
