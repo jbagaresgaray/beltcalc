@@ -42,7 +42,7 @@
                 $scope.nextTitle = 'Next';
             } else if (currentStateName == 'app.twopulleys-02') {
                 $scope.pulleyCenter = TwoPullyCalculator.getPulleyCenterDistance();
-                $scope.nextTitle = 'Next';
+                $scope.nextTitle = 'Next';                
             } else if (currentStateName == 'app.twopulleys-03') {
                 $scope.largeDiameter = TwoPullyCalculator.getLargePulleyDiameter();
                 $scope.nextTitle = 'Next';
@@ -53,10 +53,6 @@
                 $scope.pulleyCenter = TwoPullyCalculator.getPulleyCenterDistance();
                 $scope.largeDiameter = TwoPullyCalculator.getLargePulleyDiameter();
                 $scope.smallDiameter = TwoPullyCalculator.getSmallPulleyDiameter();
-
-                console.log('pulleyCenter: ', $scope.pulleyCenter);
-                console.log('largeDiameter: ', $scope.largeDiameter);
-                console.log('smallDiameter: ', $scope.smallDiameter);
 
                 var pulleyCenter = TwoPullyCalculator.calculatePulleyCenter(TwoPullyCalculator.getPulleyCenterDistance());
                 var largeDiameter = TwoPullyCalculator.calculatePulleyDiameter(TwoPullyCalculator.getLargePulleyDiameter());
@@ -94,13 +90,13 @@
 
         $scope.nextPage = function () {
             if ($ionicHistory.currentStateName() !== TwoPullyCalculator.pagesArr()[4]) {
-                /*if (currentStateName == 'app.twopulleys-02') {
+                if (currentStateName == 'app.twopulleys-02') {
                     TwoPullyCalculator.setPulleyCenterDistance($scope.pulleyCenter);
                 } else if (currentStateName == 'app.twopulleys-03') {
                     TwoPullyCalculator.setLargePulleyDiameter($scope.largeDiameter);
                 } else if (currentStateName == 'app.twopulleys-04') {
                     TwoPullyCalculator.setSmallPulleyDiameter($scope.smallDiameter);
-                }*/
+                }
 
                 $state.go(TwoPullyCalculator.pagesArr()[currentPage + 1]);
             } else {
