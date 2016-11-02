@@ -1,0 +1,12 @@
+{
+  "name": "V-BeltCalc",
+  "app_id": "3538f118",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
+}
